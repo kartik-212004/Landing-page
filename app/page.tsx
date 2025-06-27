@@ -5,6 +5,7 @@ import { Zap } from "lucide-react";
 import HowItWorks from "@/components/HowItWorks";
 import Recommended from "@/components/Recommended";
 import WhatAreWe from "@/components/Scalable";
+import ServicesSection from "@/components/WhatWeProvide";
 
 export default function Home() {
   return (
@@ -46,6 +47,7 @@ export default function Home() {
       <WhatAreWe />
       <HowItWorks />
       <Recommended />
+      <ServicesSection />
     </main>
   );
 }
