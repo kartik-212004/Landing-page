@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "slow",
   pauseOnHover = true,
   className,
 }: {
@@ -40,50 +40,26 @@ export const InfiniteMovingCards = ({
         }
       });
 
-      getDirection();
       getSpeed();
       setStart(true);
     }
   }
-  const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "normal"
-        );
-        containerRef.current.style.setProperty(
-          "--animation-name",
-          "scroll"
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "normal"
-        );
-        containerRef.current.style.setProperty(
-          "--animation-name",
-          "scroll-reverse"
-        );
-      }
-    }
-  };
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
         containerRef.current.style.setProperty(
           "--animation-duration",
-          "20s"
+          "80s"
         );
       } else if (speed === "normal") {
         containerRef.current.style.setProperty(
           "--animation-duration",
-          "40s"
+          "100s"
         );
       } else {
         containerRef.current.style.setProperty(
           "--animation-duration",
-          "80s"
+          "140s"
         );
       }
     }
@@ -100,13 +76,16 @@ export const InfiniteMovingCards = ({
         ref={scrollerRef}
         className={cn(
           "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
-          start && "animate-scroll",
+          start &&
+            (direction === "left"
+              ? "animate-scroll"
+              : "animate-scroll-right"),
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[280px] max-w-full shrink-0 rounded-xl border border-zinc-700 bg-zinc-900/80 backdrop-blur-sm px-6 py-4 md:w-[320px] shadow-lg"
+            className="relative w-[280px] max-w-full shrink-0 rounded-xl  bg-zinc-900/80 backdrop-blur-sm px-6 py-4 md:w-[320px] shadow-lg"
             key={item.name}
           >
             <blockquote>
@@ -119,10 +98,10 @@ export const InfiniteMovingCards = ({
               </span>
               <div className="relative z-20 mt-4 flex flex-row items-center">
                 <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.4] font-semibold text-cyan-400">
+                  <span className="text-sm leading-[1.4] font-bold text-white">
                     {item.name}
                   </span>
-                  <span className="text-xs leading-[1.4] font-medium text-yellow-400">
+                  <span className="text-xs leading-[1.4] font-semibold text-white">
                     {item.title}
                   </span>
                 </span>
