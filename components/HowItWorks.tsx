@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Server, Rocket, Settings, Play } from "lucide-react";
-import TechStack from "./ui/TechStack";
+import { TechStack } from "./ui/Howitworks-components";
+import { CompareDemo } from "./ui/Howitworks-components";
 
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -21,7 +22,7 @@ const HowItWorks = () => {
       description:
         "Deploy the MCP node on our Q-flow servers. This will spin a private server in our backend infrastructure.",
       icon: <Rocket className="w-6 h-6" />,
-      component: <TechStack />, // Optional component to show tech stack
+      component: <CompareDemo />, // Optional component to show tech stack
     },
     {
       title: "Register And Publish",

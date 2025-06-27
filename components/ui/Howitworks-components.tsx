@@ -1,5 +1,6 @@
 import React from "react";
 import { Database, Play, Triangle, Github } from "lucide-react";
+import { Compare } from "@/components/ui/compare";
 
 const techStackItems = [
   {
@@ -34,7 +35,7 @@ const techStackItems = [
   },
 ];
 
-export default function TechStack() {
+export function TechStack() {
   return (
     <div className="rounded-xl space-y-3">
       {techStackItems.map((item, index) => (
@@ -55,6 +56,21 @@ export default function TechStack() {
           </span>
         </div>
       ))}
+    </div>
+  );
+}
+
+export function CompareDemo() {
+  return (
+    <div className="w-full h-full min-h-[200px] rounded-lg overflow-hidden">
+      <Compare
+        firstImage="https://assets.aceternity.com/code-problem.png"
+        secondImage="https://assets.aceternity.com/code-solution.png"
+        firstImageClassName="object-cover object-left-top"
+        secondImageClassname="object-cover object-left-top"
+        className="w-full h-full min-h-[200px]"
+        slideMode="hover"
+      />
     </div>
   );
 }
