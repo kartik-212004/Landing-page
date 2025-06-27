@@ -74,3 +74,14 @@ export function CompareDemo() {
     </div>
   );
 }
+
+import { Globe } from "@/components/magicui/globe";
+
+export function GlobeDemo() {
+  return (
+    <div className="relative flex w-full h-full min-h-[200px] items-center justify-center overflow-hidden rounded-lg p-2">
+      <Globe className="scale-90" />
+      <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
+    </div>
+  );
+}

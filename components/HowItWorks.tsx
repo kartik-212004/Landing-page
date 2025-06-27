@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Server, Rocket, Settings, Play } from "lucide-react";
 import { TechStack } from "./ui/Howitworks-components";
 import { CompareDemo } from "./ui/Howitworks-components";
+import { GlobeDemo } from "./ui/Howitworks-components";
 
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -29,14 +30,14 @@ const HowItWorks = () => {
       description:
         "Enter credentials to make MCP work on commands and publish in test playground.",
       icon: <Settings className="w-6 h-6" />,
-      component: <TechStack />, // Optional component to show tech stack
+      component: <GlobeDemo />, // Optional component to show tech stack
     },
     {
       title: "Test in Playground",
       description:
         "Use the Playground to simulate inputs, observe outputs, and configure runtime behaviors.",
       icon: <Play className="w-6 h-6" />,
-      component: <TechStack />, // Optional component to show tech stack
+      component: <CompareDemo />, // Optional component to show tech stack
     },
   ];
 
