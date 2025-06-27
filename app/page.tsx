@@ -3,6 +3,7 @@ import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 import HowItWorks from "@/components/HowItWorks";
+import Recommended from "@/components/Recommended";
 import WhatAreWe from "@/components/Scalable";
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
       <section className="relative w-full min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Spline
-            scene="https://prod.spline.design/o-vTvxh5arFueIbN/scene.splinecode"
+            scene="https://prod.spline.design/hrSFBrjnLVa-AGek/scene.splinecode"
             style={{ pointerEvents: "none" }}
           />
         </div>
@@ -44,6 +45,7 @@ export default function Home() {
       {/* Rest of the page content */}
       <WhatAreWe />
       <HowItWorks />
+      <Recommended />
     </main>
   );
 }

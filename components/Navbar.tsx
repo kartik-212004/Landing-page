@@ -15,7 +15,7 @@ const navLinks = [
 export default function Navbar() {
   return (
     <>
-      <nav className="relative flex items-center justify-between px-8 py-3 bg-neutral-950  text-white overflow-hidden">
+      <nav className="relative flex items-center justify-between px-8 py-3 bg-black text-white overflow-hidden">
         {/* Left - Logo */}
         <div className="flex items-center space-x-2 z-10">
           <Image src={logo} alt="Logo" width={30} height={30} />
@@ -45,7 +45,7 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-      <div className="h-[1px] bg-radial from-[#00faff] to-[black]"></div>
+      <div className="h-[1px] bg-gradient-to-r from-black via-[#00faff] to-black w-full" />
     </>
   );
 }
