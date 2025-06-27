@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { MarqueeDemo } from "./magicui/marquee-content";
+import { InfiniteMovingCardsDemo } from "./marquee";
 
 export default function Recommended() {
   return (
@@ -11,7 +11,7 @@ export default function Recommended() {
       <h1 className="text-5xl font-bold flex flex-col text-center">
         Recommended by leaders in the <br /> digital asset industry.
       </h1>
-      <MarqueeDemo />
+      <InfiniteMovingCardsDemo />
     </section>
   );
 }

@@ -26,10 +26,36 @@ body {
   }
 }
 
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .animate-marquee {
   animation: marquee var(--duration) linear infinite;
 }
 
 .animate-marquee-vertical {
   animation: marquee-vertical var(--duration) linear infinite;
+}
+
+.animate-scroll {
+  animation: var(--animation-name, scroll) var(--animation-duration, 40s) var(--animation-direction, normal) linear infinite;
+}
+
+.animate-scroll-reverse {
+  animation: scroll-reverse var(--animation-duration, 40s) linear infinite;
 }
