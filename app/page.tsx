@@ -19,16 +19,16 @@ export default function Home() {
           />
         </div>
         <div className="relative z-10 flex flex-col items-center w-full space-y-10 pt-32 pb-8">
-          <Button className="text-lg border-2 border-neutral-700 rounded-2xl bg-neutral-900">
+          <Button className="btn-text-medium border-2 border-neutral-700 rounded-2xl bg-neutral-900">
             <Zap /> Extend your LLM capabilities with Aximo
           </Button>
 
-          <h1 className="text-6xl font-bold flex flex-col text-center">
+          <h1 className="text-display-medium flex flex-col text-center">
             <span> Revolutionizing MCP With</span>
             <span>QEDA Architecture</span>
           </h1>
 
-          <Button className="bg-white text-black text-xl font-semibold border border-neutral-400">
+          <Button className="bg-white text-black btn-text-large border border-neutral-400">
             Launch Dapp
           </Button>
 

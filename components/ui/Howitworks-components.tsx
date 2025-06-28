@@ -84,12 +84,12 @@ const Notification = ({
           <span className="text-sm">{icon}</span>
         </div>
         <div className="flex flex-col overflow-hidden">
-          <figcaption className="flex flex-row items-center whitespace-pre text-sm font-medium text-white">
-            <span className="text-xs sm:text-sm">{name}</span>
+          <figcaption className="flex flex-row items-center whitespace-pre text-caption text-white">
+            <span className="text-caption">{name}</span>
             <span className="mx-1">·</span>
-            <span className="text-xs text-gray-400">{time}</span>
+            <span className="text-overline text-gray-400">{time}</span>
           </figcaption>
-          <p className="text-xs font-normal text-gray-300">
+          <p className="text-body-small text-gray-300">
             {description}
           </p>
         </div>

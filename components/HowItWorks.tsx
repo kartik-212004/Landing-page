@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Server, Rocket, Settings, Play } from "lucide-react";
-import { TechStack } from "./ui/Howitworks-components";
 import { CompareDemo } from "./ui/Howitworks-components";
 import { GlobeDemo } from "./ui/Howitworks-components";
 import { AnimatedListDemo } from "./ui/Howitworks-components";
@@ -53,35 +52,35 @@ const HowItWorks = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <Button className="text-lg border-2 my-8 border-neutral-700 rounded-2xl bg-neutral-900">
+        <div className="text-center mb-20">
+          <Button className="btn-text-small border-2 my-8 border-neutral-700 rounded-2xl bg-neutral-900 px-6 py-3">
             Bringing Scalable MPC Together
           </Button>
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className="text-display-medium mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             How it Works
           </h2>
 
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-body-large text-gray-400 max-w-3xl mx-auto">
             Select from the marketplace, deploy or list nodes built to
             run:
           </p>
         </div>
 
         {/* Steps Grid */}
-        <div className="grid lg:grid-cols-4 gap-6 max-w-8xl mx-auto">
+        <div className="grid lg:grid-cols-4 gap-8 max-w-8xl mx-auto">
           {steps.map((step, index) => (
             <Card
               key={index}
-              className="border border-[#212121] h-[35rem] bg-[#0f0f0f] transition-all duration-500 cursor-pointer group "
+              className="border border-[#212121] h-[37rem] bg-[#0f0f0f] transition-all duration-500 cursor-pointer group hover:border-neutral-600"
               onClick={() => setActiveStep(index)}
             >
-              <CardContent className="px-4 py-4 ">
-                <h3 className="text-2xl font-semibold mb-3 text-center text-white group-hover:text-gray-100 transition-colors">
+              <CardContent className="px-6 py-2">
+                <h3 className="text-title-large text-center text-white group-hover:text-gray-100 transition-colors mb-4">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-400 font-semibold text-sm text-center mb-6 leading-relaxed group-hover:text-gray-300 transition-colors">
+                <p className="text-body-medium text-gray-400 text-center mb-6 group-hover:text-gray-300 transition-colors">
                   {step.description}
                 </p>
                 {step.component}

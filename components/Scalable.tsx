@@ -34,17 +34,17 @@ const WhatAreWe = () => {
       <div className="max-w-7xl mx-auto rounded-4xl relative z-10">
         {/* Header Badge */}
         <div className="flex justify-center mb-4">
-          <Button className="text-lg border-2 my-8 border-neutral-700 rounded-2xl bg-neutral-900">
+          <Button className="btn-text-medium border-2 my-8 border-neutral-700 rounded-2xl bg-neutral-900">
             <Boxes /> Bringing Scalable MPC Together
           </Button>
         </div>
 
         {/* Main Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className="text-display-medium mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             What are we?
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+          <p className="text-body-large text-gray-400 max-w-4xl mx-auto">
             We are MCP protocol for Blockchain and real-world
             platforms like Maps, GitHub etc. Built on QEDA, it powers
             real-time, voice-driven execution with support for custom
@@ -64,7 +64,7 @@ const WhatAreWe = () => {
                   {feature.icon}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-gray-100 transition-colors duration-300">
+                <h3 className="text-title-large text-white group-hover:text-gray-100 transition-colors duration-300">
                   {feature.title}
                 </h3>
               </CardContent>
