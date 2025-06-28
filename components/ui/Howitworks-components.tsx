@@ -1,61 +1,124 @@
-import React from "react";
-import { Database, Play, Triangle, Github } from "lucide-react";
+"use client";
+import React, { use } from "react";
+
 import { Compare } from "@/components/ui/compare";
 
-const techStackItems = [
+import { cn } from "@/lib/utils";
+import { AnimatedList } from "@/components/magicui/animated-list";
+
+interface Item {
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  time: string;
+}
+
+let notifications = [
   {
     name: "Redis",
-    icon: <Database className="w-5 h-5" />,
-    color: "text-red-500",
-    bgColor: "bg-red-500/10",
+    description: "Database Server",
+    time: "15m ago",
+    icon: "🛢️", // Replaced StackIcon with a Redis emoji
+    color: "#DC382D",
   },
   {
     name: "Microsoft Playwright MCP",
-    icon: <Play className="w-5 h-5" />,
-    color: "text-green-500",
-    bgColor: "bg-green-500/10",
+    description: "Browser Automation",
+    time: "10m ago",
+    icon: "🎭",
+    color: "#00BCF2",
   },
   {
     name: "Alchemy MCP Server",
-    icon: <Triangle className="w-5 h-5" />,
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
+    description: "Blockchain API",
+    time: "5m ago",
+    icon: "⚗️",
+    color: "#8B5CF6",
   },
   {
     name: "Base",
-    icon: <div className="w-4 h-4 bg-white rounded-full" />,
-    color: "text-white",
-    bgColor: "bg-white/10",
+    description: "L2 Blockchain",
+    time: "2m ago",
+    icon: "🏗️",
+    color: "#0052FF",
   },
   {
     name: "Github",
-    icon: <Github className="w-5 h-5" />,
-    color: "text-white",
-    bgColor: "bg-white/10",
+    description: "Code Repository",
+    time: "1m ago",
+    icon: "�",
+    color: "#24292E",
   },
 ];
 
-export function TechStack() {
-  return (
-    <div className="rounded-xl space-y-3">
-      {techStackItems.map((item, index) => (
-        <div
-          key={index}
-          className="flex items-center gap-3 p-3 border border-[#212121] rounded-2xl bg-[#171717] transition-all duration-200 cursor-pointer group"
-        >
-          {/* Icon container */}
-          <div
-            className={`flex items-center justify-center w-8 h-8 rounded-lg ${item.bgColor} ${item.color} group-hover:scale-110 transition-transform duration-200`}
-          >
-            {item.icon}
-          </div>
+notifications = Array.from(
+  { length: 10 },
+  () => notifications
+).flat();
 
-          {/* Name */}
-          <span className="text-white text-sm font-medium group-hover:text-gray-100 transition-colors">
-            {item.name}
-          </span>
+const Notification = ({
+  name,
+  description,
+  icon,
+  color,
+  time,
+}: Item) => {
+  return (
+    <figure
+      className={cn(
+        "relative mx-auto min-h-fit w-full max-w-[300px] cursor-pointer overflow-hidden rounded-2xl p-3 ",
+        // animation styles
+        "transition-all duration-200 ease-in-out hover:scale-[102%]",
+        // dark styles for better visibility
+        "bg-[#1c1c1c] backdrop-blur-sm shadow-lg"
+      )}
+    >
+      <div className="flex flex-row items-center gap-3">
+        <div
+          className="flex size-8 items-center justify-center rounded-lg text-white"
+          style={{
+            backgroundColor: color,
+          }}
+        >
+          <span className="text-sm">{icon}</span>
         </div>
-      ))}
+        <div className="flex flex-col overflow-hidden">
+          <figcaption className="flex flex-row items-center whitespace-pre text-sm font-medium text-white">
+            <span className="text-xs sm:text-sm">{name}</span>
+            <span className="mx-1">·</span>
+            <span className="text-xs text-gray-400">{time}</span>
+          </figcaption>
+          <p className="text-xs font-normal text-gray-300">
+            {description}
+          </p>
+        </div>
+      </div>
+    </figure>
+  );
+};
+
+export { Notification };
+
+export function AnimatedListDemo({
+  className,
+}: {
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "relative flex h-full w-full min-h-[200px] flex-col overflow-hidden rounded-lg bg-black/5 p-2",
+        className
+      )}
+    >
+      <AnimatedList>
+        {notifications.slice(0, 5).map((item, idx) => (
+          <Notification {...item} key={idx} />
+        ))}
+      </AnimatedList>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/10 to-transparent"></div>
     </div>
   );
 }

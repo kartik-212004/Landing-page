@@ -1,10 +1,16 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "../style/css/satoshi.css";
 
 @custom-variant dark (&:is(.dark *));
 
+* {
+  font-family: 'Satoshi-Variable', 'Satoshi-Regular', system-ui, -apple-system, sans-serif;
+}
+
 body {
   color: white;
+  font-family: 'Satoshi-Variable', 'Satoshi-Regular', system-ui, -apple-system, sans-serif;
 }
 
 /* Marquee Animations */

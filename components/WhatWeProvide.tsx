@@ -24,7 +24,7 @@ const ServicesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Q-Flow Scalable Backend Infrastructure */}
           <Card className="border border-[#212121] bg-[#0f0f0f] ">
-            <CardContent className="p-8">
+            <CardContent className="px-8 py-2">
               <h3 className="text-xl font-semibold text-white mb-4">
                 Q-Flow Scalable Backend Infrastructure
               </h3>
@@ -32,14 +32,13 @@ const ServicesSection = () => {
                 Protocol extension that makes it easy to deploy and
                 connect MCP servers across blockchain ecosystems.
               </p>
-              <img src={stack} alt="stack" />
             </CardContent>
             {/* <ThreeDMarqueeDemo /> */}
           </Card>
 
           {/* Cross-Chain Compute and Data Access */}
           <Card className="border border-[#212121] bg-[#0f0f0f] ">
-            <CardContent className="p-8">
+            <CardContent className="px-8 py-2">
               <h3 className="text-xl font-semibold text-white mb-4">
                 Cross-Chain Compute and Data Access
               </h3>
@@ -55,7 +54,7 @@ const ServicesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Voice-First Server Interface */}
           <Card className="border border-[#212121] bg-[#0f0f0f] ">
-            <CardContent className="p-8">
+            <CardContent className="px-8 py-2">
               <h3 className="text-xl font-semibold text-white mb-4">
                 Voice-First Server Interface
               </h3>
@@ -69,7 +68,7 @@ const ServicesSection = () => {
 
           {/* Unified Platform for MCP Services */}
           <Card className="border border-[#212121] bg-[#0f0f0f] ">
-            <CardContent className="p-8">
+            <CardContent className="px-8 py-2">
               <h3 className="text-xl font-semibold text-white mb-4">
                 Unified Platform for MCP Services
               </h3>
@@ -83,7 +82,7 @@ const ServicesSection = () => {
 
           {/* Tooling for Faster Development */}
           <Card className="border border-[#212121] bg-[#0f0f0f] ">
-            <CardContent className="p-8">
+            <CardContent className="px-8 py-2">
               <h3 className="text-xl font-semibold text-white mb-4">
                 Tooling for Faster Development
               </h3>

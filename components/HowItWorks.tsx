@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import { Server, Rocket, Settings, Play } from "lucide-react";
 import { TechStack } from "./ui/Howitworks-components";
 import { CompareDemo } from "./ui/Howitworks-components";
 import { GlobeDemo } from "./ui/Howitworks-components";
+import { AnimatedListDemo } from "./ui/Howitworks-components";
 
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -16,7 +18,7 @@ const HowItWorks = () => {
       description:
         "Launch your own compute server or pick from existing nodes listed on the marketplace.",
       icon: <Server className="w-6 h-6" />,
-      component: <TechStack />, // Optional component to show tech stack
+      component: <AnimatedListDemo />, // Optional component to show notifications
     },
     {
       title: "Deploy",
@@ -70,7 +72,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <Card
               key={index}
-              className="border border-[#212121] bg-[#0f0f0f] transition-all duration-500 cursor-pointer group "
+              className="border border-[#212121] h-[35rem] bg-[#0f0f0f] transition-all duration-500 cursor-pointer group "
               onClick={() => setActiveStep(index)}
             >
               <CardContent className="px-4 py-4 ">
