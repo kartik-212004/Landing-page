@@ -1,30 +1,36 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "motion/react";
+import { cn } from '@/lib/utils';
+
 import React, {
   ComponentPropsWithoutRef,
   useEffect,
   useMemo,
   useState,
-} from "react";
+} from 'react';
+
+import { AnimatePresence, motion } from 'motion/react';
 
 export function AnimatedListItem({ children }: { children: React.ReactNode }) {
   const animations = {
     initial: { scale: 0, opacity: 0 },
     animate: { scale: 1, opacity: 1, originY: 0 },
     exit: { scale: 0, opacity: 0 },
-    transition: { type: "spring" as const, stiffness: 350, damping: 40 },
+    transition: { type: 'spring' as const, stiffness: 350, damping: 40 },
   };
 
   return (
-    <motion.div {...animations} layout className="mx-auto w-full">
+    <motion.div
+      {...animations}
+      layout
+      className='mx-auto w-full'
+    >
       {children}
     </motion.div>
   );
 }
 
-export interface AnimatedListProps extends ComponentPropsWithoutRef<"div"> {
+export interface AnimatedListProps extends ComponentPropsWithoutRef<'div'> {
   children: React.ReactNode;
   delay?: number;
 }
@@ -34,13 +40,13 @@ export const AnimatedList = React.memo(
     const [index, setIndex] = useState(0);
     const childrenArray = useMemo(
       () => React.Children.toArray(children),
-      [children],
+      [children]
     );
 
     useEffect(() => {
       if (index < childrenArray.length - 1) {
         const timeout = setTimeout(() => {
-          setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length);
+          setIndex(prevIndex => (prevIndex + 1) % childrenArray.length);
         }, delay);
 
         return () => clearTimeout(timeout);
@@ -58,7 +64,7 @@ export const AnimatedList = React.memo(
         {...props}
       >
         <AnimatePresence>
-          {itemsToShow.map((item) => (
+          {itemsToShow.map(item => (
             <AnimatedListItem key={(item as React.ReactElement).key}>
               {item}
             </AnimatedListItem>
@@ -66,7 +72,7 @@ export const AnimatedList = React.memo(
         </AnimatePresence>
       </div>
     );
-  },
+  }
 );
 
-AnimatedList.displayName = "AnimatedList";
+AnimatedList.displayName = 'AnimatedList';

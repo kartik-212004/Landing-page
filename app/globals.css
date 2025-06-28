@@ -6,8 +6,10 @@
 
 /* Industry-standard typography system using Satoshi font */
 :root {
-  --font-primary: 'Satoshi-Variable', 'Satoshi-Regular', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  
+  --font-primary:
+    "Satoshi-Variable", "Satoshi-Regular", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+
   /* Font weights for consistent usage */
   --font-weight-light: 300;
   --font-weight-regular: 400;
@@ -15,21 +17,21 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-black: 900;
-  
+
   /* Typography scale for consistent sizing */
-  --text-xs: 0.75rem;     /* 12px */
-  --text-sm: 0.875rem;    /* 14px */
-  --text-base: 1rem;      /* 16px */
-  --text-lg: 1.125rem;    /* 18px */
-  --text-xl: 1.25rem;     /* 20px */
-  --text-2xl: 1.5rem;     /* 24px */
-  --text-3xl: 1.875rem;   /* 30px */
-  --text-4xl: 2.25rem;    /* 36px */
-  --text-5xl: 3rem;       /* 48px */
-  --text-6xl: 3.75rem;    /* 60px */
-  --text-7xl: 4.5rem;     /* 72px */
-  --text-8xl: 6rem;       /* 96px */
-  
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
+  --text-5xl: 3rem; /* 48px */
+  --text-6xl: 3.75rem; /* 60px */
+  --text-7xl: 4.5rem; /* 72px */
+  --text-8xl: 6rem; /* 96px */
+
   /* Line heights */
   --leading-tight: 1.25;
   --leading-snug: 1.375;
@@ -40,7 +42,10 @@
 
 * {
   font-family: var(--font-primary);
-  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,44 +60,117 @@ body {
 }
 
 /* Typography utility classes for consistent usage */
+/* Responsive typography - mobile first approach */
 .text-display-large {
-  font-size: var(--text-8xl);
+  font-size: var(--text-5xl); /* Mobile: 48px */
   font-weight: var(--font-weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: -0.02em;
 }
 
+@media (min-width: 768px) {
+  .text-display-large {
+    font-size: var(--text-7xl); /* Tablet: 72px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-display-large {
+    font-size: var(--text-8xl); /* Desktop: 96px */
+  }
+}
+
 .text-display-medium {
-  font-size: var(--text-7xl);
+  font-size: var(--text-4xl); /* Mobile: 36px */
   font-weight: var(--font-weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: -0.015em;
 }
 
+@media (min-width: 768px) {
+  .text-display-medium {
+    font-size: var(--text-6xl); /* Tablet: 60px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-display-medium {
+    font-size: var(--text-7xl); /* Desktop: 72px */
+  }
+}
+
 .text-display-small {
-  font-size: var(--text-6xl);
+  font-size: var(--text-3xl); /* Mobile: 30px */
   font-weight: var(--font-weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: -0.01em;
 }
 
+@media (min-width: 768px) {
+  .text-display-small {
+    font-size: var(--text-5xl); /* Tablet: 48px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-display-small {
+    font-size: var(--text-6xl); /* Desktop: 60px */
+  }
+}
+
 .text-headline-large {
-  font-size: var(--text-5xl);
+  font-size: var(--text-3xl); /* Mobile: 30px */
   font-weight: var(--font-weight-semibold);
   line-height: var(--leading-tight);
   letter-spacing: -0.005em;
 }
 
+@media (min-width: 768px) {
+  .text-headline-large {
+    font-size: var(--text-4xl); /* Tablet: 36px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-headline-large {
+    font-size: var(--text-5xl); /* Desktop: 48px */
+  }
+}
+
 .text-headline-medium {
-  font-size: var(--text-4xl);
+  font-size: var(--text-2xl); /* Mobile: 24px */
   font-weight: var(--font-weight-semibold);
   line-height: var(--leading-snug);
 }
 
+@media (min-width: 768px) {
+  .text-headline-medium {
+    font-size: var(--text-3xl); /* Tablet: 30px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-headline-medium {
+    font-size: var(--text-4xl); /* Desktop: 36px */
+  }
+}
+
 .text-headline-small {
-  font-size: var(--text-3xl);
+  font-size: var(--text-xl); /* Mobile: 20px */
   font-weight: var(--font-weight-semibold);
   line-height: var(--leading-snug);
+}
+
+@media (min-width: 768px) {
+  .text-headline-small {
+    font-size: var(--text-2xl); /* Tablet: 24px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-headline-small {
+    font-size: var(--text-3xl); /* Desktop: 30px */
+  }
 }
 
 .text-title-large {
@@ -221,4 +299,102 @@ body {
 
 .animate-scroll-reverse {
   animation: scroll-reverse var(--animation-duration, 40s) linear infinite;
+}
+
+/* Mobile-responsive spacing utilities */
+.mobile-container {
+  padding-left: 1rem; /* 16px */
+  padding-right: 1rem; /* 16px */
+}
+
+@media (min-width: 640px) {
+  .mobile-container {
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-container {
+    padding-left: 2rem; /* 32px */
+    padding-right: 2rem; /* 32px */
+  }
+}
+
+/* Mobile-first grid utilities */
+.mobile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Mobile button adjustments */
+.btn-mobile {
+  padding: 0.75rem 1.5rem;
+  font-size: var(--text-sm);
+  min-height: 44px; /* Touch-friendly minimum */
+}
+
+@media (min-width: 768px) {
+  .btn-mobile {
+    padding: 1rem 2rem;
+    font-size: var(--text-base);
+  }
+}
+
+/* Mobile card adjustments */
+.card-mobile {
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .card-mobile {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-mobile {
+    padding: 2rem;
+    border-radius: 1.25rem;
+  }
+}
+
+/* Mobile hero section adjustments */
+.hero-mobile {
+  min-height: 80vh;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero-mobile {
+    min-height: 90vh;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-mobile {
+    min-height: 100vh;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
 }
