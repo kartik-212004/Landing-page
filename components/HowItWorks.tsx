@@ -46,7 +46,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className='bg-black text-white mobile-container relative overflow-hidden py-12 md:py-16 lg:py-20'>
+    <section className='bg-black text-white mobile-container relative overflow-hidden py-4 md:py-16 lg:py-20'>
       {/* Background effects */}
       <div className='absolute inset-0'>
         <div className='absolute top-1/3 left-1/5 w-48 md:w-96 h-48 md:h-96 bg-purple-500/5 rounded-full blur-3xl'></div>
@@ -56,9 +56,11 @@ const HowItWorks = () => {
       <div className='max-w-7xl mx-auto relative z-10'>
         {/* Header */}
         <div className='text-center mb-12 md:mb-16 lg:mb-20'>
-          <Button className='btn-text-small border-2 my-6 md:my-8 border-neutral-700 rounded-xl md:rounded-2xl bg-neutral-900 btn-mobile'>
-            Bringing Scalable MPC Together
-          </Button>
+          <div className='flex  flex-row justify-center pb-4 sm:pb-8 items-center'>
+            <button className='px-5 flex flex-row space-x-2 justify-center items-center py-1 md:px-4 md:py-2 btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900'>
+              Pick a MCP • Deploy a Node • Register • Run it
+            </button>
+          </div>
           <h2 className='text-display-medium mb-6 md:mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent px-4 md:px-0'>
             How it Works
           </h2>
@@ -73,11 +75,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <Card
               key={index}
-              className={`border card-mobile bg-[#0f0f0f] transition-all duration-500 cursor-pointer group min-h-[24rem] md:min-h-[28rem] lg:h-[37rem] ${
-                activeStep === index
-                  ? 'border-neutral-500 shadow-lg'
-                  : 'border-[#212121] hover:border-neutral-600'
-              }`}
+              className='border card-mobile bg-[#0f0f0f] transition-all duration-500 cursor-pointer group min-h-[24rem] md:min-h-[28rem] lg:h-[37rem] '
               onClick={() => setActiveStep(index)}
             >
               <CardContent className='p-4 md:p-6 h-full flex flex-col'>

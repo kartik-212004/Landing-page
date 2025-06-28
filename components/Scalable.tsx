@@ -11,17 +11,17 @@ import { Button } from './ui/button';
 const WhatAreWe = () => {
   const features = [
     {
-      icon: <Puzzle className='w-6 h-6 md:w-8 md:h-8 text-white' />,
+      icon: <Puzzle className='h-12 w-12 md:h-12 md:w-12  text-white' />,
       title: 'Marketplace of MCPs.',
       description: 'Discover and integrate various MCP protocols',
     },
     {
-      icon: <Code className='w-6 h-6 md:w-8 md:h-8 text-white' />,
+      icon: <Code className='h-12 w-12 md:h-12 md:w-12  text-white' />,
       title: 'Voice-Driven task execution',
       description: 'Execute tasks through natural voice commands',
     },
     {
-      icon: <Database className='w-6 h-6 md:w-8 md:h-8 text-white' />,
+      icon: <Database className='h-12 w-12 md:h-12 md:w-12  text-white' />,
       title: 'MCP protocol for blockchain',
       description: 'Specialized protocols for blockchain integration',
     },
@@ -61,20 +61,17 @@ const WhatAreWe = () => {
           {features.map((feature, index) => (
             <Card
               key={index}
-              className='transition-all duration-500 hover:scale-105 group cursor-pointer'
+              className='transition-all py-2 duration-500 hover:scale-105 group cursor-pointer'
             >
               <CardContent className='card-mobile text-center flex flex-col md:flex-row md:text-left items-center md:items-start space-y-4 md:space-y-0 md:space-x-4'>
-                <div className='w-24 h-24 md:w-16 md:h-16 bg-gradient-to-br border rounded-xl md:rounded-2xl flex items-center justify-center group-hover:from-gray-600 group-hover:to-gray-700 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-white/10 flex-shrink-0'>
+                <div className='w-24 h-24 md:w-28 md:h-28 bg-gradient-to-l from-white/20 via-black to-white/30 border rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0'>
                   {feature.icon}
                 </div>
 
                 <div className='flex-1'>
-                  <h3 className='text-title-medium md:text-title-large text-white group-hover:text-gray-100 transition-colors duration-300 mb-2 md:mb-3'>
+                  <h3 className='text-title-small md:text-title-large text-white group-hover:text-gray-100 transition-colors duration-300 mb-2 md:mb-3'>
                     {feature.title}
                   </h3>
-                  <p className='text-body-small md:text-body-medium text-gray-400 group-hover:text-gray-300 transition-colors duration-300'>
-                    {feature.description}
-                  </p>
                 </div>
               </CardContent>
             </Card>

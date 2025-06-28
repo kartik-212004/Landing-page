@@ -53,7 +53,7 @@ export default function Navbar() {
 
         {/* Right - Button and Mobile Menu */}
         <div className='flex items-center space-x-3 z-20'>
-          <button className='bg-white text-black btn-text-small btn-mobile'>
+          <button className='bg-white hidden items-center  text-black btn-text-small btn-mobile'>
             <span className='hidden sm:inline'>Whitepaper</span>
             <span className='sm:hidden'>Paper</span>
           </button>
