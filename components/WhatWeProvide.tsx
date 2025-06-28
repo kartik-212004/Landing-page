@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import stack from "../public/image-stack.png";
+// import stack from "../public/image-stack.png";
 import { Button } from "./ui/button";
 
 const ServicesSection = () => {
@@ -8,7 +8,7 @@ const ServicesSection = () => {
     <div className="min-h-screen bg-black text-white p-8">
       <div className="flex flex-row justify-center items-center mb-12 ">
         <Button className="btn-text-small border-2 my-8 border-neutral-700 rounded-2xl bg-neutral-900 px-6 py-3">
-          Your Average LLM's On Steroids
+          Your Average LLM&apos;s On Steroids
         </Button>
       </div>
       {/* Main Title */}

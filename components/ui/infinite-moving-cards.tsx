@@ -22,12 +22,30 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    addAnimation();
-  }, []);
   const [start, setStart] = useState(false);
-  function addAnimation() {
+
+  const getSpeed = React.useCallback(() => {
+    if (containerRef.current) {
+      if (speed === "fast") {
+        containerRef.current.style.setProperty(
+          "--animation-duration",
+          "80s"
+        );
+      } else if (speed === "normal") {
+        containerRef.current.style.setProperty(
+          "--animation-duration",
+          "100s"
+        );
+      } else {
+        containerRef.current.style.setProperty(
+          "--animation-duration",
+          "120s"
+        );
+      }
+    }
+  }, [speed]);
+
+  const addAnimation = React.useCallback(() => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(
         scrollerRef.current.children
@@ -43,27 +61,12 @@ export const InfiniteMovingCards = ({
       getSpeed();
       setStart(true);
     }
-  }
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty(
-          "--animation-duration",
-          "80s"
-        );
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty(
-          "--animation-duration",
-          "100s"
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-duration",
-          "140s"
-        );
-      }
-    }
-  };
+  }, [getSpeed]);
+
+  useEffect(() => {
+    addAnimation();
+  }, [addAnimation]);
+
   return (
     <div
       ref={containerRef}

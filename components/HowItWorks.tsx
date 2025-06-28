@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Server, Rocket, Settings, Play } from "lucide-react";
@@ -9,7 +9,7 @@ import { GlobeDemo } from "./ui/Howitworks-components";
 import { AnimatedListDemo } from "./ui/Howitworks-components";
 
 const HowItWorks = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  // const [activeStep, setActiveStep] = useState(0);
 
   const steps = [
     {
