@@ -1,22 +1,16 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { ThreeDMarqueeDemo } from "./ui/WhatWeProve-components";
+import stack from "../public/image-stack.png";
+import { Button } from "./ui/button";
 
 const ServicesSection = () => {
   return (
     <div className="min-h-screen bg-black text-white p-8">
-      {/* Header Badge */}
-      <div className="flex justify-center mb-12">
-        <div className="flex items-center gap-2  border border-gray-700 rounded-full px-4 py-2">
-          <div className="w-4 h-4 bg-gray-400 rounded-full flex items-center justify-center">
-            <div className="w-2 h-2 bg-white rounded-full"></div>
-          </div>
-          <span className="text-gray-300 text-sm font-medium">
-            Your Average LLM's On Steroids
-          </span>
-        </div>
+      <div className="flex flex-row justify-center items-center mb-8 ">
+        <Button className="text-lg border-2 my-8 border-neutral-700 rounded-2xl bg-neutral-900">
+          Your Average LLM's On Steroids
+        </Button>
       </div>
-
       {/* Main Title */}
       <div className="text-center mb-16">
         <h1 className="text-6xl font-bold text-white mb-4">
@@ -38,6 +32,7 @@ const ServicesSection = () => {
                 Protocol extension that makes it easy to deploy and
                 connect MCP servers across blockchain ecosystems.
               </p>
+              <img src={stack} alt="stack" />
             </CardContent>
             {/* <ThreeDMarqueeDemo /> */}
           </Card>
