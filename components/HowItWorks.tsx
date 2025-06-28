@@ -1,6 +1,6 @@
 "use client";
 
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Server, Rocket, Settings, Play } from "lucide-react";
@@ -9,7 +9,7 @@ import { GlobeDemo } from "./ui/Howitworks-components";
 import { AnimatedListDemo } from "./ui/Howitworks-components";
 
 const HowItWorks = () => {
-  // const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
   const steps = [
     {
@@ -71,7 +71,11 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <Card
               key={index}
-              className="border border-[#212121] h-[37rem] bg-[#0f0f0f] transition-all duration-500 cursor-pointer group hover:border-neutral-600"
+              className={`border h-[37rem] bg-[#0f0f0f] transition-all duration-500 cursor-pointer group ${
+                activeStep === index 
+                  ? 'border-neutral-500 shadow-lg' 
+                  : 'border-[#212121] hover:border-neutral-600'
+              }`}
               onClick={() => setActiveStep(index)}
             >
               <CardContent className="px-6 py-2">
@@ -95,7 +99,11 @@ const HowItWorks = () => {
             <button
               key={index}
               onClick={() => setActiveStep(index)}
-              className="w-3 h-3 rounded-full transition-all duration-300"
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                activeStep === index 
+                  ? 'bg-white scale-125' 
+                  : 'bg-gray-500 hover:bg-gray-400'
+              }`}
             />
           ))}
         </div>
