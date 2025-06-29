@@ -3,7 +3,6 @@ import React from 'react';
 import { Send } from 'lucide-react';
 
 import { InfiniteMovingCardsDemo } from './marquee';
-import { Button } from './ui/button';
 
 export default function Recommended() {
   return (

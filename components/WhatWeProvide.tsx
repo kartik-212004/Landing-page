@@ -1,8 +1,5 @@
 import React from 'react';
 
-// import stack from "../public/image-stack.png";
-import { Button } from './ui/button';
-
 const ServicesSection = () => {
   return (
     <div className='min-h-screen bg-black text-white  lg:pt-20 mobile-container'>
