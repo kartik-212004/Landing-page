@@ -91,51 +91,15 @@ const HowItWorks = () => {
         </motion.div>
 
         {/* Steps Grid - Mobile: Stack vertically, Tablet: 2 cols, Desktop: 4 cols */}
-        <motion.div
+        <div
           className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto'
-          initial='hidden'
-          whileInView='visible'
-          viewport={{ once: true, amount: 0.1, margin: '0px 0px -100px 0px' }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.1,
-              },
-            },
-          }}
         >
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={index}
               className='border border-[#222222] p-4 pt-8 rounded-3xl bg-[#0f0f0f] transition-all duration-300 cursor-pointer group h-[22rem] md:h-[32rem] lg:h-[30rem] w-full will-change-transform'
               onClick={() => setActiveStep(index)}
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: 30,
-                  scale: 0.95,
-                },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  transition: {
-                    duration: 0.4,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                  },
-                },
-              }}
-              whileHover={{
-                y: -4,
-                scale: 1.01,
-                transition: { duration: 0.2, ease: 'easeOut' },
-              }}
-              style={{
-                transform: 'translateZ(0)',
-                backfaceVisibility: 'hidden',
-              }}
+           
             >
               <div className='h-full flex flex-col '>
                 <h3 className='text-title-medium md:text-title-large text-center  text-white group-hover:text-gray-100 transition-colors mb-4'>
@@ -154,9 +118,9 @@ const HowItWorks = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Step navigation dots */}
         <motion.div
