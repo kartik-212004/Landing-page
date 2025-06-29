@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className='relative w-full bg-black min-h-screen'>
       {/* Hero Section with Spline */}
-      <section className='relative w-full hero-mobile flex flex-col items-center justify-center overflow-hidden'>
+      <section className='relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 md:px-8 lg:px-12'>
         <div className='absolute hidden md:block inset-0 z-0'>
           <Spline
             scene='https://prod.spline.design/hrSFBrjnLVa-AGek/scene.splinecode'
@@ -24,8 +24,8 @@ export default function Home() {
         {/* Mobile background gradient when Spline is hidden */}
         <div className='absolute md:hidden inset-0 z-0 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20'></div>
 
-        <div className='relative z-10 flex flex-col items-center w-full mobile-container space-y-6 md:space-y-8 lg:space-y-10'>
-          <button className='px-5 flex flex-row space-x-2 justify-center items-center py-1 md:px-4 md:py-2 btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900'>
+        <div className='relative z-10 flex flex-col items-center w-full max-w-6xl space-y-8 md:space-y-10 lg:space-y-12'>
+          <button className='px-4 py-2 md:px-6 md:py-3 flex flex-row space-x-2 justify-center items-center btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors'>
             <Zap className='w-4 h-4 md:w-5 md:h-5' />
             <span className='hidden sm:inline'>
               Extend your LLM capabilities with Aximo
@@ -33,16 +33,16 @@ export default function Home() {
             <span className='sm:hidden'>Extend LLM with Aximo</span>
           </button>
 
-          <h1 className='sm:text-5xl md:text-6xl text-3xl font-semibold flex flex-col text-center px-2 md:px-0'>
+          <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold flex flex-col text-center leading-tight'>
             <span>Revolutionizing MCP With</span>
             <span>QEDA Architecture</span>
           </h1>
 
-          <Button className='bg-white h-1 text-black btn-text-medium md:btn-text-large border border-neutral-400 btn-mobile'>
+          <Button className='bg-white text-black px-8 py-3 md:px-10 md:py-4 btn-text-medium md:btn-text-large border border-neutral-400 rounded-lg hover:bg-neutral-100 transition-colors'>
             Launch Dapp
           </Button>
 
-          <div className='relative z-20 w-full max-w-4xl md:px-0'>
+          <div className='relative z-20 w-full max-w-4xl'>
             <HeroVideoDialog
               className='block w-full aspect-video rounded-lg md:rounded-xl overflow-hidden'
               animationStyle='from-center'
@@ -53,12 +53,15 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Rest of the page content */}
-      <WhatAreWe />
-      <HowItWorks />
-      <Recommended />
-      <Partners />
-      <ServicesSection />
+
+      {/* Content Sections with consistent spacing */}
+      <div className=''>
+        <WhatAreWe />
+        <HowItWorks />
+        <Recommended />
+        <Partners />
+        <ServicesSection />
+      </div>
     </main>
   );
 }

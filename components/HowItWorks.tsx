@@ -41,7 +41,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className='bg-black text-white mobile-container relative overflow-hidden py-4 md:py-16 lg:py-20'>
+    <section className='bg-black text-white px-4 md:px-8 lg:px-12 relative overflow-hidden '>
       {/* Background effects */}
       <div className='absolute inset-0'>
         <div className='absolute top-1/3 left-1/5 w-48 md:w-96 h-48 md:h-96 bg-purple-500/5 rounded-full blur-3xl'></div>
@@ -66,30 +66,12 @@ const HowItWorks = () => {
         </div>
 
         {/* Steps Grid - Mobile: Stack vertically, Tablet: 2 cols, Desktop: 4 cols */}
-        <motion.div
-          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto'
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <motion.div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto'>
           {steps.map((step, index) => (
             <motion.div
               key={index}
               className='border border-[#222222] p-4 pt-8 rounded-3xl bg-[#0f0f0f] transition-all duration-500 cursor-pointer group h-[22rem] md:h-[32rem] lg:h-[30rem] w-full '
               onClick={() => setActiveStep(index)}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: 'easeOut',
-              }}
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.2 },
-              }}
             >
               <div className='h-full flex flex-col '>
                 <h3 className='text-title-medium md:text-title-large text-center  text-white group-hover:text-gray-100 transition-colors mb-4'>

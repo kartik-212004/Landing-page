@@ -23,7 +23,7 @@ const WhatAreWe = () => {
   ];
 
   return (
-    <section className='bg-black text-white py-8 md:py-16 lg:py-20 mobile-container relative overflow-hidden'>
+    <section className='bg-black text-white py-16 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12 relative overflow-hidden'>
       {/* Background gradient effects */}
       <div className='absolute inset-0'>
         <div className='absolute top-1/4 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse'></div>
@@ -32,8 +32,8 @@ const WhatAreWe = () => {
 
       <div className='max-w-7xl mx-auto relative z-10'>
         {/* Header Badge */}
-        <div className='flex justify-center mb-4'>
-          <button className='px-5 flex flex-row space-x-2 justify-center items-center py-2 md:px-4 md:py-2 btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900'>
+        <div className='flex justify-center mb-8'>
+          <button className='px-6 py-3 flex flex-row space-x-2 justify-center items-center btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors'>
             <Bitcoin className='w-4 h-4 md:w-5 md:h-5' />
             <span className='inline'>Bringing Scalable MPC Together</span>
           </button>
@@ -41,10 +41,10 @@ const WhatAreWe = () => {
 
         {/* Main Heading */}
         <div className='text-center mb-12 md:mb-16'>
-          <h2 className='text-display-medium mb-6 md:mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent px-4 md:px-0'>
+          <h2 className='text-display-medium mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent'>
             What are we?
           </h2>
-          <p className='text-body-medium md:text-body-large text-gray-400 max-w-4xl mx-auto px-4 md:px-0'>
+          <p className='text-body-medium md:text-body-large text-gray-400 max-w-4xl mx-auto'>
             We are MCP protocol for Blockchain and real-world platforms like Maps,
             GitHub etc. Built on QEDA, it powers real-time, voice-driven execution
             with support for custom protocols.
