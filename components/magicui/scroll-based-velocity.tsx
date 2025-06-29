@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
   motion,
@@ -30,7 +30,7 @@ export const wrap = (min: number, max: number, v: number) => {
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
 
-function ParallaxText({ children, baseVelocity = 100, ...props }: ParallaxProps) {
+const ParallaxText = React.memo(({ children, baseVelocity = 100, ...props }: ParallaxProps) => {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -43,87 +43,112 @@ function ParallaxText({ children, baseVelocity = 100, ...props }: ParallaxProps)
     clamp: false,
   });
 
-  const [repetitions, setRepetitions] = useState(1);
+  const [repetitions, setRepetitions] = useState(3); // Start with a reasonable default
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
+  const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Memoized calculation function
+  const calculateRepetitions = useCallback(() => {
+    if (containerRef.current && textRef.current) {
+      const containerWidth = containerRef.current.offsetWidth;
+      const textWidth = textRef.current.offsetWidth;
+      const newRepetitions = Math.max(2, Math.ceil(containerWidth / textWidth) + 1);
+      
+      // Only update if the value actually changed
+      setRepetitions(prev => prev !== newRepetitions ? newRepetitions : prev);
+    }
+  }, []);
+
+  // Debounced resize handler
+  const handleResize = useCallback(() => {
+    if (resizeTimeoutRef.current) {
+      clearTimeout(resizeTimeoutRef.current);
+    }
+    resizeTimeoutRef.current = setTimeout(calculateRepetitions, 150);
+  }, [calculateRepetitions]);
 
   useEffect(() => {
-    const calculateRepetitions = () => {
-      if (containerRef.current && textRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        const textWidth = textRef.current.offsetWidth;
-        const newRepetitions = Math.ceil(containerWidth / textWidth) + 2;
-        setRepetitions(newRepetitions);
+    // Initial calculation after a small delay to ensure DOM is ready
+    const initialTimer = setTimeout(calculateRepetitions, 100);
+
+    window.addEventListener('resize', handleResize, { passive: true });
+    
+    return () => {
+      clearTimeout(initialTimer);
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
       }
+      window.removeEventListener('resize', handleResize);
     };
-
-    calculateRepetitions();
-
-    window.addEventListener('resize', calculateRepetitions);
-    return () => window.removeEventListener('resize', calculateRepetitions);
-  }, [children]);
+  }, [calculateRepetitions, handleResize]);
 
   const x = useTransform(baseX, v => `${wrap(-100 / repetitions, 0, v)}%`);
 
-  const directionFactor = React.useRef<number>(1);
+  const directionFactor = useRef<number>(1);
+  
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+    // Limit delta to prevent large jumps
+    const clampedDelta = Math.min(delta, 32); // Cap at ~30fps equivalent
+    let moveBy = directionFactor.current * baseVelocity * (clampedDelta / 1000);
 
-    if (velocityFactor.get() < 0) {
+    const velocity = velocityFactor.get();
+    if (velocity < 0) {
       directionFactor.current = -1;
-    } else if (velocityFactor.get() > 0) {
+    } else if (velocity > 0) {
       directionFactor.current = 1;
     }
 
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
-
+    moveBy += directionFactor.current * moveBy * velocity;
     baseX.set(baseX.get() + moveBy);
   });
 
   return (
     <div
       ref={containerRef}
-      className='w-full overflow-hidden whitespace-nowrap'
+      className='relative w-full overflow-hidden whitespace-nowrap'
       {...props}
     >
       <motion.div
-        className='inline-block'
+        className='inline-block will-change-transform'
         style={{ x }}
       >
-        {Array.from({ length: repetitions }).map((_, i) => (
+        {Array.from({ length: repetitions }, (_, i) => (
           <span
             key={i}
             ref={i === 0 ? textRef : null}
+            className='inline-block'
           >
             {children}{' '}
           </span>
         ))}
       </motion.div>
-      {/* Left fade gradient - small edge dimming on mobile, larger on desktop */}
-      <div className='absolute left-0 top-0 w-16 sm:w-24 md:w-32 lg:w-40 h-full bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none z-10' />
-
-      {/* Right fade gradient - small edge dimming on mobile, larger on desktop */}
-      <div className='absolute right-0 top-0 w-16 sm:w-24 md:w-32 lg:w-40 h-full bg-gradient-to-l from-black via-black/70 to-transparent pointer-events-none z-10' />
+      
+      {/* Optimized fade gradients with better performance */}
+      <div className='absolute left-0 top-0 w-16 sm:w-24 md:w-32 lg:w-40 h-full bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none z-10 will-change-auto' />
+      <div className='absolute right-0 top-0 w-16 sm:w-24 md:w-32 lg:w-40 h-full bg-gradient-to-l from-black via-black/70 to-transparent pointer-events-none z-10 will-change-auto' />
     </div>
   );
-}
+});
 
-export function VelocityScroll({
+ParallaxText.displayName = 'ParallaxText';
+
+export const VelocityScroll = React.memo(({
   defaultVelocity = 5,
   numRows = 1,
   children,
   className,
   ...props
-}: VelocityScrollProps) {
+}: VelocityScrollProps) => {
   return (
     <div
       className={cn(
-        'relative w-[80%] text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-[5rem]',
+        'relative w-full text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-0.02em] will-change-auto',
         className
       )}
       {...props}
     >
-      {Array.from({ length: numRows }).map((_, i) => (
+      {Array.from({ length: numRows }, (_, i) => (
         <ParallaxText
           key={i}
           baseVelocity={defaultVelocity * (i % 2 === 0 ? 1 : -1)}
@@ -133,4 +158,6 @@ export function VelocityScroll({
       ))}
     </div>
   );
-}
+});
+
+VelocityScroll.displayName = 'VelocityScroll';

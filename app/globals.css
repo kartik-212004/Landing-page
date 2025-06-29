@@ -51,6 +51,47 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hardware acceleration for smooth animations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+/* GPU acceleration for scroll-based components */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  /* Optimize motion components */
+  [data-motion-component] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimize font rendering for better performance */
+.font-optimize {
+  font-display: swap;
+  text-rendering: optimizeSpeed;
+}
+
 body {
   color: white;
   font-family: var(--font-primary);
