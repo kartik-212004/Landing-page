@@ -1,4 +1,5 @@
 import HowItWorks from '@/components/HowItWorks';
+import Partners from '@/components/Partners';
 import Recommended from '@/components/Recommended';
 import WhatAreWe from '@/components/Scalable';
 import ServicesSection from '@/components/WhatWeProvide';
@@ -56,6 +57,7 @@ export default function Home() {
       <WhatAreWe />
       <HowItWorks />
       <Recommended />
+      <Partners />
       <ServicesSection />
     </main>
   );

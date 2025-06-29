@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 
 import { Play } from 'lucide-react';
+import { motion } from 'motion/react';
 
 import { CompareDemo } from './ui/Howitworks-components';
 import { GlobeDemo } from './ui/Howitworks-components';
@@ -65,12 +66,30 @@ const HowItWorks = () => {
         </div>
 
         {/* Steps Grid - Mobile: Stack vertically, Tablet: 2 cols, Desktop: 4 cols */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto'>
+        <motion.div
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto'
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {steps.map((step, index) => (
-            <div
+            <motion.div
               key={index}
               className='border border-[#222222] p-4 pt-8 rounded-3xl bg-[#0f0f0f] transition-all duration-500 cursor-pointer group h-[22rem] md:h-[32rem] lg:h-[30rem] w-full '
               onClick={() => setActiveStep(index)}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: 'easeOut',
+              }}
+              viewport={{ once: true, amount: 0.3 }}
+              whileHover={{
+                scale: 1.02,
+                transition: { duration: 0.2 },
+              }}
             >
               <div className='h-full flex flex-col '>
                 <h3 className='text-title-medium md:text-title-large text-center  text-white group-hover:text-gray-100 transition-colors mb-4'>
@@ -89,9 +108,9 @@ const HowItWorks = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Step navigation dots */}
         <div className='flex justify-center mt-8 md:mt-12 space-x-2 md:space-x-3'>

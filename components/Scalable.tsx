@@ -23,7 +23,7 @@ const WhatAreWe = () => {
   ];
 
   return (
-    <section className='bg-black text-white py-12 md:py-16 lg:py-20 mobile-container relative overflow-hidden'>
+    <section className='bg-black text-white py-8 md:py-16 lg:py-20 mobile-container relative overflow-hidden'>
       {/* Background gradient effects */}
       <div className='absolute inset-0'>
         <div className='absolute top-1/4 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse'></div>
