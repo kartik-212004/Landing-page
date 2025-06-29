@@ -1,12 +1,7 @@
-import { Card, CardContent } from '@/components/ui/card';
-
 import React from 'react';
 
 import { Bitcoin } from 'lucide-react';
 import { Code, Database, Puzzle } from 'lucide-react';
-import { Boxes } from 'lucide-react';
-
-import { Button } from './ui/button';
 
 const WhatAreWe = () => {
   const features = [
@@ -59,11 +54,11 @@ const WhatAreWe = () => {
         {/* Feature Cards - Mobile: Stack vertically, Desktop: 3 columns */}
         <div className='grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-8 max-w-6xl mx-auto'>
           {features.map((feature, index) => (
-            <Card
+            <div
               key={index}
               className='transition-all py-2 duration-500 hover:scale-105 group cursor-pointer'
             >
-              <CardContent className='card-mobile text-center flex flex-col md:flex-row md:text-left items-center md:items-start space-y-4 md:space-y-0 md:space-x-4'>
+              <div className='card-mobile text-center flex flex-col md:flex-row md:text-left items-center md:items-start space-y-4 md:space-y-0 md:space-x-4'>
                 <div className='w-24 h-24 md:w-28 md:h-28 bg-gradient-to-l from-white/20 via-black to-white/30 border rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0'>
                   {feature.icon}
                 </div>
@@ -73,8 +68,8 @@ const WhatAreWe = () => {
                     {feature.title}
                   </h3>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </div>

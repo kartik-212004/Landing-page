@@ -1,11 +1,8 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-
 import React, { useState } from 'react';
 
-import { Play, Rocket, Server, Settings } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 import { CompareDemo } from './ui/Howitworks-components';
 import { GlobeDemo } from './ui/Howitworks-components';
@@ -19,21 +16,18 @@ const HowItWorks = () => {
       title: 'Choose a MCP Server',
       description:
         'Launch your own compute server or pick from existing nodes listed on the marketplace.',
-      icon: <Server className='w-6 h-6' />,
       component: <AnimatedListDemo />, // Optional component to show notifications
     },
     {
       title: 'Deploy',
       description:
         'Deploy the MCP node on our Q-flow servers. This will spin a private server in our backend infrastructure.',
-      icon: <Rocket className='w-6 h-6' />,
       component: <CompareDemo />, // Optional component to show tech stack
     },
     {
       title: 'Register And Publish',
       description:
         'Enter credentials to make MCP work on commands and publish in test playground.',
-      icon: <Settings className='w-6 h-6' />,
       component: <GlobeDemo />, // Optional component to show tech stack
     },
     {
@@ -71,36 +65,31 @@ const HowItWorks = () => {
         </div>
 
         {/* Steps Grid - Mobile: Stack vertically, Tablet: 2 cols, Desktop: 4 cols */}
-        <div className='mobile-grid'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto'>
           {steps.map((step, index) => (
-            <Card
+            <div
               key={index}
-              className='border card-mobile bg-[#0f0f0f] transition-all duration-500 cursor-pointer group min-h-[24rem] md:min-h-[28rem] lg:h-[37rem] '
+              className='border border-[#222222] p-4 pt-8 rounded-3xl bg-[#0f0f0f] transition-all duration-500 cursor-pointer group h-[22rem] md:h-[32rem] lg:h-[30rem] w-full '
               onClick={() => setActiveStep(index)}
             >
-              <CardContent className='p-4 md:p-6 h-full flex flex-col'>
-                {/* Icon */}
-                <div className='flex justify-center mb-4'>
-                  <div className='p-3 bg-neutral-800 rounded-full'>
-                    {React.cloneElement(step.icon, {
-                      className: 'w-5 h-5 md:w-6 md:h-6',
-                    })}
-                  </div>
-                </div>
-
-                <h3 className='text-title-medium md:text-title-large text-center text-white group-hover:text-gray-100 transition-colors mb-4'>
+              <div className='h-full flex flex-col '>
+                <h3 className='text-title-medium md:text-title-large text-center  text-white group-hover:text-gray-100 transition-colors mb-4'>
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className='text-body-small md:text-body-medium text-gray-400 text-center mb-6 group-hover:text-gray-300 transition-colors flex-grow'>
+                <p className='text-body-small md:text-body-medium text-gray-400 text-center mb-6 group-hover:text-gray-300 transition-colors'>
                   {step.description}
                 </p>
 
-                {/* Component - hide on mobile to save space, show on larger screens */}
-                <div className='hidden md:block'>{step.component}</div>
-              </CardContent>
-            </Card>
+                {/* Component container with fixed height and full width */}
+                <div className='flex-1 flex items-center justify-center min-h-[180px] md:min-h-[200px] w-full'>
+                  <div className='w-full h-full max-w-full overflow-hidden'>
+                    {step.component}
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
