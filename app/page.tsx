@@ -56,10 +56,10 @@ export default function Home() {
 
       {/* Content Sections with consistent spacing */}
       <div className=''>
+        <Partners />
         <WhatAreWe />
         <HowItWorks />
         <Recommended />
-        <Partners />
         <ServicesSection />
       </div>
     </main>
