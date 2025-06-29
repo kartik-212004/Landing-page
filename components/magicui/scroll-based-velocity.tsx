@@ -99,11 +99,11 @@ function ParallaxText({ children, baseVelocity = 100, ...props }: ParallaxProps)
           </span>
         ))}
       </motion.div>
-      {/* Left fade gradient */}
-      <div className='absolute left-0 top-0 w-32 md:w-48 lg:w-64 h-full bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none z-10' />
+      {/* Left fade gradient - small edge dimming on mobile, larger on desktop */}
+      <div className='absolute left-0 top-0 w-16 sm:w-24 md:w-32 lg:w-40 h-full bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none z-10' />
 
-      {/* Right fade gradient */}
-      <div className='absolute right-0 top-0 w-32 md:w-48 lg:w-64 h-full bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10' />
+      {/* Right fade gradient - small edge dimming on mobile, larger on desktop */}
+      <div className='absolute right-0 top-0 w-16 sm:w-24 md:w-32 lg:w-40 h-full bg-gradient-to-l from-black via-black/70 to-transparent pointer-events-none z-10' />
     </div>
   );
 }
