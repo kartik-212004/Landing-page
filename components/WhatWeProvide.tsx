@@ -2,7 +2,7 @@ import React from 'react';
 
 const ServicesSection = () => {
   return (
-    <div className='min-h-screen bg-black text-white  lg:pt-20 mobile-container'>
+    <div className='min-h-screen bg-black text-white  py-12 lg:pt-20 mobile-container'>
       <div className='flex justify-center mb-4'>
         <button className='px-5 flex flex-row space-x-2 justify-center items-center py-2 md:px-4 md:py-2 btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900'>
           <span className='inline'>Your Average LLM’s On Steroids</span>
