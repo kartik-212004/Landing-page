@@ -2,14 +2,16 @@ import React from 'react';
 
 export default function planetsvg() {
   return (
-    <div>
-     
+    <div className="w-full h-full flex items-center justify-center">
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='100%'
           height='100%'
           viewBox='0 0 387 413'
           fill='none'
+          className="w-full h-full max-w-full max-h-full"
+          preserveAspectRatio="xMidYMid meet"
+          style={{ minWidth: '300px', minHeight: '300px' }}
         >
           <path
             d='M240.171 92.3843C211.245 78.3676 177.096 84.143 150.88 101.437C124.014 119.023 104.676 147.186 96.3865 178.074C83.1485 226.403 99.8257 278.479 141.357 298.319L158.634 306.625C112.999 284.643 98.6252 225.819 117.038 175.592C125.507 152.085 140.448 130.8 160.192 115.421C187.495 93.9579 225.23 85.1651 257.449 100.69L240.171 92.3843Z'
@@ -30,7 +32,7 @@ export default function planetsvg() {
             y='92'
             width='198'
             height='223'
-            style='mask-type: luminance;'
+            style={{ maskType: 'luminance' }}
           >
             <path
               d='M208.244 93.9545C262.807 85.2638 306.948 127.332 306.836 187.918C306.723 248.503 262.4 304.666 207.837 313.356C153.274 322.049 109.133 279.979 109.246 219.394C109.358 158.808 153.681 102.647 208.244 93.9545Z'
@@ -39,8 +41,8 @@ export default function planetsvg() {
           </mask>
           <g mask='url(#mask0_300_1597)'>
             <path
-              fill-rule='evenodd'
-              clip-rule='evenodd'
+              fillRule='evenodd'
+              clipRule='evenodd'
               d='M133.359 248.044C136.263 257.064 140.675 265.386 146.467 272.362C152.226 279.354 159.315 284.984 167.248 288.796C171.223 290.694 175.392 292.138 179.708 293.128C184.023 294.117 188.484 294.62 192.994 294.685C194.93 294.696 196.877 294.631 198.835 294.49C200.798 294.328 202.761 294.085 204.724 293.793C210.337 292.9 215.918 291.343 221.32 289.185C226.738 287.044 231.978 284.302 236.991 281.058C247.001 274.552 255.972 266.035 263.419 256.253C270.865 246.486 276.786 235.439 280.81 223.823C284.849 212.207 287.007 200.007 287.023 187.889C287.039 177.993 285.644 168.291 282.724 159.255C279.82 150.251 275.407 141.913 269.616 134.937C263.857 127.961 256.767 122.332 248.834 118.519C244.859 116.621 240.69 115.161 236.375 114.188C232.059 113.198 227.598 112.679 223.088 112.63C223.088 112.63 222.845 112.63 222.358 112.63C222.109 112.63 221.806 112.63 221.45 112.63C221.076 112.63 220.655 112.663 220.168 112.679C218.221 112.744 215.285 112.906 211.359 113.523C205.746 114.415 200.343 115.94 195.266 117.919C190.188 119.882 185.418 122.332 180.989 125.057C176.56 127.799 172.456 130.816 168.725 134.012C164.977 137.192 161.603 140.566 158.52 143.973C155.471 147.38 152.713 150.852 150.279 154.307C147.83 157.746 145.704 161.202 143.806 164.56C141.908 167.902 140.286 171.195 138.874 174.359C137.463 177.539 136.279 180.589 135.273 183.492C133.261 189.3 131.947 194.508 131.071 199.018C130.617 201.257 130.309 203.333 130.033 205.231C129.919 206.172 129.806 207.064 129.708 207.924C129.627 208.768 129.53 209.579 129.465 210.325C129.189 213.359 129.141 215.63 129.092 217.155C129.07 218.669 129.059 219.426 129.059 219.426C128.227 219.426 127.81 219.426 127.81 219.426H129.059C129.043 229.322 130.438 239.024 133.359 248.044ZM316.744 187.938H311.796C313.44 187.938 315.089 187.938 316.744 187.938ZM324.174 187.954H321.692C322.514 187.954 323.341 187.954 324.174 187.954ZM218.854 73.0786C220.395 73.0137 221.563 73.0137 222.326 73.0137C223.104 73.0137 223.494 73.0137 223.494 73.0137C230.729 73.0948 238.03 73.9222 245.184 75.5607C252.338 77.183 259.33 79.6164 265.966 82.7962C272.601 85.9921 278.879 89.9181 284.606 94.4605C290.349 99.0029 295.556 104.146 300.164 109.71C304.771 115.291 308.778 121.293 312.152 127.588C315.511 133.866 318.285 140.404 320.426 147.088C322.584 153.772 324.158 160.586 325.163 167.432C325.666 170.855 326.056 174.278 326.283 177.701C326.526 181.124 326.64 184.547 326.64 187.954C326.607 204.68 323.655 221.227 318.236 236.834C312.818 252.424 304.949 267.106 294.94 280.263C289.927 286.833 284.379 293.03 278.311 298.741C272.244 304.451 265.657 309.675 258.568 314.266C251.495 318.874 243.918 322.848 235.937 326.012C227.955 329.191 219.568 331.544 210.953 332.923C207.936 333.377 204.902 333.75 201.836 333.993C198.77 334.22 195.687 334.318 192.589 334.302C185.353 334.22 178.053 333.393 170.899 331.755C163.744 330.132 156.752 327.699 150.117 324.503C143.482 321.323 137.203 317.397 131.477 312.855C125.734 308.312 120.526 303.17 115.919 297.589C111.312 292.024 107.304 286.006 103.93 279.727C100.572 273.449 97.7977 266.911 95.6401 260.227C93.4986 253.543 91.9088 246.73 90.9192 239.884C90.4163 236.461 90.0269 233.038 89.7998 229.614C89.5564 226.191 89.4429 222.768 89.4429 219.362C89.4429 219.351 89.4429 219.345 89.4429 219.345C89.4429 219.345 89.4537 218.302 89.4753 216.214C89.5402 214.138 89.6213 211.007 90.0107 206.854C90.0918 205.815 90.2216 204.728 90.3351 203.56C90.4487 202.392 90.6272 201.176 90.7732 199.878C91.1463 197.314 91.5681 194.492 92.1846 191.442C93.3688 185.326 95.1372 178.285 97.8464 170.482C99.1929 166.588 100.799 162.5 102.681 158.249C104.563 154.015 106.737 149.619 109.267 145.141C111.798 140.647 114.653 136.04 117.947 131.417C121.208 126.777 124.906 122.121 129.059 117.481C133.229 112.874 137.836 108.283 143.011 103.87C148.17 99.4572 153.897 95.2392 160.191 91.3457C166.486 87.4522 173.381 83.9155 180.892 80.9954C188.403 78.0753 196.515 75.7716 205.129 74.3926C211.148 73.4517 215.772 73.1759 218.854 73.0786ZM127.81 219.426H129.059C128.227 219.426 127.81 219.426 127.81 219.426Z'
               fill='url(#paint2_linear_300_1597)'
             ></path>
@@ -60,7 +62,7 @@ export default function planetsvg() {
             y='92'
             width='198'
             height='223'
-            style='mask-type: luminance;'
+            style={{ maskType: 'luminance' }}
           >
             <path
               d='M208.244 93.9545C262.807 85.2638 306.948 127.332 306.836 187.918C306.723 248.503 262.4 304.666 207.837 313.356C153.274 322.049 109.133 279.979 109.246 219.394C109.358 158.808 153.681 102.647 208.244 93.9545Z'
@@ -124,12 +126,12 @@ export default function planetsvg() {
           <path
             d='M160.747 152.908C204.815 133.094 248.337 123.396 283.041 123.68C317.887 123.965 343.23 134.276 351.979 153.735C360.728 173.195 351.621 198.995 328.708 225.249C305.888 251.396 269.749 277.515 225.681 297.329C181.613 317.143 138.092 326.84 103.389 326.556C68.5425 326.271 43.1995 315.96 34.4502 296.501C25.7008 277.041 34.8082 251.241 57.7217 224.987C80.5412 198.84 116.679 172.721 160.747 152.908Z'
             stroke='url(#paint15_linear_300_1597)'
-            stroke-width='3'
+            strokeWidth='3'
           ></path>
           <path
             d='M113.646 254.975C84.1426 211.96 65.5721 167.522 59.3515 130.495C53.1082 93.332 59.3714 64.2297 78.6418 51.0124C97.9122 37.795 127.317 42.4328 159.738 61.6405C192.041 80.7785 226.809 114.107 256.313 157.122C285.817 200.137 304.387 244.575 310.608 281.603C316.851 318.765 310.588 347.868 291.317 361.085C272.047 374.302 242.642 369.665 210.221 350.457C177.919 331.319 143.15 297.991 113.646 254.975Z'
             stroke='url(#paint16_linear_300_1597)'
-            stroke-width='3'
+            strokeWidth='3'
           ></path>
           <path
             d='M146.743 54.0171L151.561 66.6224L164.182 54.812L146.743 54.0171Z'
@@ -155,11 +157,11 @@ export default function planetsvg() {
               <stop></stop>
               <stop
                 offset='0.363'
-                stop-color='#191919'
+                stopColor='#191919'
               ></stop>
               <stop
                 offset='1'
-                stop-color='#2A2A2A'
+                stopColor='#2A2A2A'
               ></stop>
             </linearGradient>
             <linearGradient
@@ -170,14 +172,14 @@ export default function planetsvg() {
               y2='231.62'
               gradientUnits='userSpaceOnUse'
             >
-              <stop stop-color='#424242'></stop>
+              <stop stopColor='#424242'></stop>
               <stop
                 offset='0.692'
-                stop-color='#141414'
+                stopColor='#141414'
               ></stop>
               <stop
                 offset='1'
-                stop-color='#353535'
+                stopColor='#353535'
               ></stop>
             </linearGradient>
             <linearGradient
@@ -191,7 +193,7 @@ export default function planetsvg() {
               <stop></stop>
               <stop
                 offset='1'
-                stop-color='#929292'
+                stopColor='#929292'
               ></stop>
             </linearGradient>
             <linearGradient
@@ -202,7 +204,7 @@ export default function planetsvg() {
               y2='188.32'
               gradientUnits='userSpaceOnUse'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </linearGradient>
             <linearGradient
@@ -213,7 +215,7 @@ export default function planetsvg() {
               y2='203.273'
               gradientUnits='userSpaceOnUse'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </linearGradient>
             <linearGradient
@@ -224,7 +226,7 @@ export default function planetsvg() {
               y2='130.659'
               gradientUnits='userSpaceOnUse'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </linearGradient>
             <linearGradient
@@ -235,7 +237,7 @@ export default function planetsvg() {
               y2='81.5897'
               gradientUnits='userSpaceOnUse'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </linearGradient>
             <radialGradient
@@ -246,7 +248,7 @@ export default function planetsvg() {
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(100.534 92.8137) rotate(90) scale(39.5157)'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </radialGradient>
             <radialGradient
@@ -257,7 +259,7 @@ export default function planetsvg() {
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(366.339 336.151) rotate(90) scale(18.5775 18.5775)'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </radialGradient>
             <radialGradient
@@ -268,7 +270,7 @@ export default function planetsvg() {
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(67.9487 280.068) rotate(90) scale(18.5775 18.5775)'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </radialGradient>
             <radialGradient
@@ -279,7 +281,7 @@ export default function planetsvg() {
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(250.887 99.1572) rotate(90) scale(11.544 11.544)'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </radialGradient>
             <radialGradient
@@ -290,7 +292,7 @@ export default function planetsvg() {
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(33.4336 333.758) rotate(90) scale(11.544 11.544)'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </radialGradient>
             <radialGradient
@@ -301,7 +303,7 @@ export default function planetsvg() {
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(27.6421 31.2153) rotate(90) scale(11.544)'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </radialGradient>
             <radialGradient
@@ -312,7 +314,7 @@ export default function planetsvg() {
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(336.739 265.443) rotate(90) scale(11.544 11.544)'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </radialGradient>
             <radialGradient
@@ -323,7 +325,7 @@ export default function planetsvg() {
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(347.764 76.599) rotate(90) scale(22.5688 22.5688)'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop offset='1'></stop>
             </radialGradient>
             <linearGradient
@@ -334,10 +336,10 @@ export default function planetsvg() {
               y2='349.674'
               gradientUnits='userSpaceOnUse'
             >
-              <stop stop-color='white'></stop>
+              <stop stopColor='white'></stop>
               <stop
                 offset='0.776217'
-                stop-color='#0F0F0F'
+                stopColor='#0F0F0F'
               ></stop>
             </linearGradient>
             <linearGradient
@@ -350,11 +352,11 @@ export default function planetsvg() {
             >
               <stop
                 offset='0.25'
-                stop-color='#0F0F0F'
+                stopColor='#0F0F0F'
               ></stop>
               <stop
                 offset='1'
-                stop-color='white'
+                stopColor='white'
               ></stop>
             </linearGradient>
           </defs>
