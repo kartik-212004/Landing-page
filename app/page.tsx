@@ -3,6 +3,8 @@ import Partners from '@/components/Partners';
 import Recommended from '@/components/Recommended';
 import WhatAreWe from '@/components/Scalable';
 import UseCases from '@/components/UseCases';
+import VoiceNative from '@/components/Voice-Navtive';
+import Comparison from '@/components/Comparison';
 import ServicesSection from '@/components/WhatWeProvide';
 import HeroVideoDialog from '@/components/magicui/hero-video-dialog';
 import CustomLineSeparator from '@/components/ui/CustomLineSeparator';
@@ -72,7 +74,14 @@ export default function Home() {
 
         <ServicesSection />
         <CustomLineSeparator />
+        
         <UseCases />
+        <CustomLineSeparator />
+        
+        <VoiceNative />
+        <CustomLineSeparator />
+        
+        <Comparison />
       </div>
     </main>
   );
