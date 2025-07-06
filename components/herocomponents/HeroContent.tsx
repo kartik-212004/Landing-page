@@ -21,7 +21,7 @@ export default function HeroContent() {
 
   if (!isMounted) {
     return (
-      <div className='relative z-10 flex flex-col items-center w-full max-w-6xl space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 px-2 sm:px-4'>
+      <div className='relative z-10 flex flex-col items-center w-full max-w-6xl space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 px-2 pt-2 sm:px-4'>
         <button className='px-6 py-3 flex flex-row space-x-2 justify-center items-center btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors'>
           <Zap className='w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5' />
           <span className='hidden sm:inline'>

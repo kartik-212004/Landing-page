@@ -46,7 +46,7 @@ SplineWrapper.displayName = 'SplineWrapper';
 
 const Hero = memo(() => {
   return (
-    <section className='relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden px-3 sm:px-4 md:px-8 lg:px-12 pt-16 sm:pt-28 md:pt-20  pb-8 sm:pb-12 md:pb-16 perf-optimized'>
+    <section className='relative w-full  flex flex-col items-center justify-center overflow-hidden px-3 sm:px-4 md:px-8 lg:px-12 pt-16 sm:pt-28 md:pt-20  pb-8 sm:pb-12 md:pb-16 perf-optimized'>
       {/* Desktop Spline - Lazy loaded with delay */}
       <div className='absolute hidden md:block inset-0 z-0'>
         <SplineWrapper />
