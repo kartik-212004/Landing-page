@@ -30,7 +30,7 @@ const Navbar = memo(() => {
 
   return (
     <>
-      <nav className='relative flex items-center justify-between mobile-container py-2 sm:py-3 bg-black text-white overflow-hidden'>
+      <nav className='fixed top-0 left-0 right-0 z-50 flex items-center justify-between mobile-container py-2 sm:py-3 bg-black/95 backdrop-blur-sm text-white overflow-hidden border-b border-gray-800/50'>
         {/* Left - Logo */}
         <div className='flex items-center space-x-2 z-20'>
           <Image
@@ -78,7 +78,7 @@ const Navbar = memo(() => {
 
         {/* Mobile menu overlay */}
         {isMenuOpen && (
-          <div className='absolute top-full left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-gray-800 lg:hidden z-10'>
+          <div className='absolute top-full left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-gray-800 lg:hidden z-40'>
             <div className='mobile-container py-4 sm:py-6'>
               <div className='flex flex-col space-y-3 sm:space-y-4'>
                 {navLinks.map(link => (
