@@ -407,11 +407,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -425,11 +425,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -443,11 +443,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -461,11 +461,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -479,11 +479,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -497,11 +497,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -515,11 +515,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -533,11 +533,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -551,11 +551,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
           <linearGradient
@@ -569,11 +569,11 @@ export default function Tablesvg() {
             <stop></stop>
             <stop
               offset='0.264423'
-              stop-color='#2E2E2E'
+              stopColor='#2E2E2E'
             ></stop>
             <stop
               offset='1'
-              stop-color='#171717'
+              stopColor='#171717'
             ></stop>
           </linearGradient>
         </defs>

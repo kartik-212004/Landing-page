@@ -1,6 +1,7 @@
-import { Suspense, lazy } from 'react';
 import Hero from '@/components/Hero';
 import CustomLineSeparator from '@/components/ui/CustomLineSeparator';
+
+import { Suspense, lazy } from 'react';
 
 // Lazy load heavy components with better chunking
 const Partners = lazy(() => import('@/components/Partners'));
@@ -16,19 +17,21 @@ const Visionary = lazy(() => import('@/components/visionary'));
 // Optimized loading component with reduced animation
 function SectionLoader() {
   return (
-    <div className="w-full h-32 bg-black flex items-center justify-center">
-      <div className="w-6 h-6 border border-gray-600 border-t-white rounded-full animate-spin"></div>
+    <div className='w-full h-32 bg-black flex items-center justify-center'>
+      <div className='w-6 h-6 border border-gray-600 border-t-white rounded-full animate-spin'></div>
     </div>
   );
 }
 
 // Memoized wrapper for sections to prevent unnecessary re-renders
-function SectionWrapper({ children, fallback = <SectionLoader /> }: { children: React.ReactNode; fallback?: React.ReactNode }) {
-  return (
-    <Suspense fallback={fallback}>
-      {children}
-    </Suspense>
-  );
+function SectionWrapper({
+  children,
+  fallback = <SectionLoader />,
+}: {
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
+}) {
+  return <Suspense fallback={fallback}>{children}</Suspense>;
 }
 
 export default function Home() {
