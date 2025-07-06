@@ -18,25 +18,25 @@ export default function HeroContent() {
 
   if (!isMounted) {
     return (
-      <div className='relative z-10 flex flex-col items-center w-full max-w-6xl space-y-8 md:space-y-10 lg:space-y-12'>
-        <button className='px-4 py-2 md:px-6 md:py-3 flex flex-row space-x-2 justify-center items-center btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors'>
-          <Zap className='w-4 h-4 md:w-5 md:h-5' />
+      <div className='relative z-10 flex flex-col items-center w-full max-w-6xl space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 px-2 sm:px-4'>
+        <button className='px-3 sm:px-4 py-2 md:px-6 md:py-3 flex flex-row space-x-2 justify-center items-center text-xs sm:text-sm md:btn-text-medium border-2 border-neutral-700 rounded-2xl sm:rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors font-medium'>
+          <Zap className='w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5' />
           <span className='hidden sm:inline'>
             Extend your LLM capabilities with Aximo
           </span>
           <span className='sm:hidden'>Extend LLM with Aximo</span>
         </button>
 
-        <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold flex flex-col text-center leading-tight'>
-          <span>Revolutionizing MCP With</span>
+        <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold flex flex-col text-center leading-tight px-2 sm:px-4'>
+          <span className='mb-1 sm:mb-2'>Revolutionizing MCP With</span>
           <span className='bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent'>QEDA Architecture</span>
         </h1>
 
-        <Button className='bg-white text-black px-8 py-3 md:px-10 md:py-4 btn-text-medium md:btn-text-large border border-neutral-400 rounded-lg hover:bg-neutral-100 transition-colors'>
+        <Button className='bg-white text-black px-6 sm:px-8 py-2.5 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:btn-text-large border border-neutral-400 rounded-lg hover:bg-neutral-100 transition-colors font-semibold'>
           Launch Dapp
         </Button>
 
-        <div className='relative z-20 w-full max-w-4xl'>
+        <div className='relative z-20 w-full max-w-4xl px-2 sm:px-4'>
           <HeroVideoDialog
             className='block w-full aspect-video rounded-lg md:rounded-xl overflow-hidden border border-neutral-700'
             animationStyle='from-center'
@@ -50,7 +50,7 @@ export default function HeroContent() {
   }
 
   return (
-    <div className='relative z-10 flex flex-col items-center w-full max-w-6xl space-y-8 md:space-y-10 lg:space-y-12'>
+    <div className='relative z-10 flex flex-col items-center w-full max-w-6xl space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 px-2 sm:px-4'>
       <AnimatedButton />
       <AnimatedTitle />
       <AnimatedLaunchButton />

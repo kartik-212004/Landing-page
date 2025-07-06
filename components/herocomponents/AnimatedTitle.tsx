@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 export default function AnimatedTitle() {
   return (
     <motion.h1
-      className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold flex flex-col text-center leading-tight'
+      className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold flex flex-col text-center leading-tight px-2 sm:px-4'
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
@@ -24,6 +24,7 @@ export default function AnimatedTitle() {
           ease: [0.23, 1, 0.32, 1],
           delay: 0.6,
         }}
+        className='mb-1 sm:mb-2'
       >
         Revolutionizing MCP With
       </motion.span>

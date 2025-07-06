@@ -21,7 +21,7 @@ export default function AnimatedLaunchButton() {
       }}
       whileTap={{ scale: 0.95 }}
     >
-      <Button className='bg-white text-black px-8 py-3 md:px-10 md:py-4 btn-text-medium md:btn-text-large border border-neutral-400 rounded-lg hover:bg-neutral-100 transition-colors relative overflow-hidden group'>
+      <Button className='bg-white text-black px-6 sm:px-8 py-2.5 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:btn-text-large border border-neutral-400 rounded-lg hover:bg-neutral-100 transition-colors relative overflow-hidden group font-semibold'>
         <motion.span
           className='relative z-10'
           initial={{ y: 0 }}
