@@ -32,7 +32,7 @@ export default function AnimatedVideoDialog() {
           ease: "easeInOut"
         }}
       >
-      
+        
         <div className='relative'>
           <HeroVideoDialog
             className='block w-full aspect-video rounded-lg md:rounded-xl overflow-hidden border border-neutral-700'

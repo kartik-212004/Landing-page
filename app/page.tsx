@@ -7,13 +7,8 @@ import WhatAreWe from '@/components/Scalable';
 import UseCases from '@/components/UseCases';
 import VoiceNative from '@/components/Voice-Navtive';
 import ServicesSection from '@/components/WhatWeProvide';
-import HeroVideoDialog from '@/components/magicui/hero-video-dialog';
 import CustomLineSeparator from '@/components/ui/CustomLineSeparator';
-import { Button } from '@/components/ui/button';
 import Visionary from '@/components/visionary';
-
-import Spline from '@splinetool/react-spline/next';
-import { Zap } from 'lucide-react';
 
 export default function Home() {
   return (
