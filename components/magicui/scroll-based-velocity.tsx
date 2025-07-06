@@ -12,6 +12,7 @@ import {
   useSpring,
   useTransform,
   useVelocity,
+  useReducedMotion,
 } from 'motion/react';
 
 interface VelocityScrollProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -34,18 +35,41 @@ const ParallaxText = React.memo(({ children, baseVelocity = 100, ...props }: Par
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
+  const shouldReduceMotion = useReducedMotion();
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+  
+  // Intersection Observer for performance
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInView(entry.isIntersecting);
+      },
+      { 
+        threshold: 0,
+        rootMargin: '50px 0px' // Start animating slightly before/after viewport
+      }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400,
+    damping: shouldReduceMotion ? 100 : 50,
+    stiffness: shouldReduceMotion ? 1000 : 400,
   });
 
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, shouldReduceMotion ? 1 : 5], {
     clamp: false,
   });
 
-  const [repetitions, setRepetitions] = useState(3); // Start with a reasonable default
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLSpanElement>(null);
+  const [repetitions, setRepetitions] = useState(3);
   const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Memoized calculation function
@@ -55,7 +79,6 @@ const ParallaxText = React.memo(({ children, baseVelocity = 100, ...props }: Par
       const textWidth = textRef.current.offsetWidth;
       const newRepetitions = Math.max(2, Math.ceil(containerWidth / textWidth) + 1);
       
-      // Only update if the value actually changed
       setRepetitions(prev => prev !== newRepetitions ? newRepetitions : prev);
     }
   }, []);
@@ -69,9 +92,7 @@ const ParallaxText = React.memo(({ children, baseVelocity = 100, ...props }: Par
   }, [calculateRepetitions]);
 
   useEffect(() => {
-    // Initial calculation after a small delay to ensure DOM is ready
     const initialTimer = setTimeout(calculateRepetitions, 100);
-
     window.addEventListener('resize', handleResize, { passive: true });
     
     return () => {
@@ -84,12 +105,14 @@ const ParallaxText = React.memo(({ children, baseVelocity = 100, ...props }: Par
   }, [calculateRepetitions, handleResize]);
 
   const x = useTransform(baseX, v => `${wrap(-100 / repetitions, 0, v)}%`);
-
   const directionFactor = useRef<number>(1);
   
   useAnimationFrame((t, delta) => {
-    // Limit delta to prevent large jumps
-    const clampedDelta = Math.min(delta, 32); // Cap at ~30fps equivalent
+    // Only animate if in view and motion is not reduced
+    if (!isInView || shouldReduceMotion) return;
+    
+    // Throttle animation frame for better performance
+    const clampedDelta = Math.min(delta, 32);
     let moveBy = directionFactor.current * baseVelocity * (clampedDelta / 1000);
 
     const velocity = velocityFactor.get();

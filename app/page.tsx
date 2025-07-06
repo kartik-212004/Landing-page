@@ -1,48 +1,87 @@
-import Comparison from '@/components/Comparison';
+import { Suspense, lazy } from 'react';
 import Hero from '@/components/Hero';
-import HowItWorks from '@/components/HowItWorks';
-import Partners from '@/components/Partners';
-import Recommended from '@/components/Recommended';
-import WhatAreWe from '@/components/Scalable';
-import UseCases from '@/components/UseCases';
-import VoiceNative from '@/components/Voice-Navtive';
-import ServicesSection from '@/components/WhatWeProvide';
 import CustomLineSeparator from '@/components/ui/CustomLineSeparator';
-import Visionary from '@/components/visionary';
+
+// Lazy load heavy components with better chunking
+const Partners = lazy(() => import('@/components/Partners'));
+const WhatAreWe = lazy(() => import('@/components/Scalable'));
+const HowItWorks = lazy(() => import('@/components/HowItWorks'));
+const Recommended = lazy(() => import('@/components/Recommended'));
+const ServicesSection = lazy(() => import('@/components/WhatWeProvide'));
+const UseCases = lazy(() => import('@/components/UseCases'));
+const VoiceNative = lazy(() => import('@/components/Voice-Navtive'));
+const Comparison = lazy(() => import('@/components/Comparison'));
+const Visionary = lazy(() => import('@/components/visionary'));
+
+// Optimized loading component with reduced animation
+function SectionLoader() {
+  return (
+    <div className="w-full h-32 bg-black flex items-center justify-center">
+      <div className="w-6 h-6 border border-gray-600 border-t-white rounded-full animate-spin"></div>
+    </div>
+  );
+}
+
+// Memoized wrapper for sections to prevent unnecessary re-renders
+function SectionWrapper({ children, fallback = <SectionLoader /> }: { children: React.ReactNode; fallback?: React.ReactNode }) {
+  return (
+    <Suspense fallback={fallback}>
+      {children}
+    </Suspense>
+  );
+}
 
 export default function Home() {
   return (
     <main className='relative w-full bg-black min-h-screen'>
-      {/* Hero Section with Spline */}
+      {/* Hero Section - Load immediately */}
       <Hero />
 
-      {/* Content Sections with custom line separators */}
+      {/* Lazy loaded content sections with optimized loading */}
       <div className='space-y-0'>
-        <Partners />
+        <SectionWrapper>
+          <Partners />
+        </SectionWrapper>
         <CustomLineSeparator />
 
-        <WhatAreWe />
+        <SectionWrapper>
+          <WhatAreWe />
+        </SectionWrapper>
         <CustomLineSeparator />
 
-        <HowItWorks />
+        <SectionWrapper>
+          <HowItWorks />
+        </SectionWrapper>
         <CustomLineSeparator />
 
-        <Recommended />
+        <SectionWrapper>
+          <Recommended />
+        </SectionWrapper>
         <CustomLineSeparator />
 
-        <ServicesSection />
+        <SectionWrapper>
+          <ServicesSection />
+        </SectionWrapper>
         <CustomLineSeparator />
 
-        <UseCases />
+        <SectionWrapper>
+          <UseCases />
+        </SectionWrapper>
         <CustomLineSeparator />
 
-        <VoiceNative />
+        <SectionWrapper>
+          <VoiceNative />
+        </SectionWrapper>
         <CustomLineSeparator />
 
-        <Comparison />
+        <SectionWrapper>
+          <Comparison />
+        </SectionWrapper>
         <CustomLineSeparator />
 
-        <Visionary />
+        <SectionWrapper>
+          <Visionary />
+        </SectionWrapper>
       </div>
     </main>
   );

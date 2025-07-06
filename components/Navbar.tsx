@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, memo, useCallback } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,8 +17,16 @@ const navLinks = [
   { href: '#stack', label: 'Dev Stack' },
 ];
 
-export default function Navbar() {
+const Navbar = memo(() => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
 
   return (
     <>
@@ -61,7 +69,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             className='lg:hidden p-1.5 sm:p-2 hover:bg-gray-800 rounded-md transition-colors'
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={toggleMenu}
             aria-label='Toggle menu'
           >
             {isMenuOpen ? <X className='w-5 h-5' /> : <Menu className='w-5 h-5' />}
@@ -78,7 +86,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     className='text-base sm:text-body-medium hover:text-[#00faff] transition-colors py-2 border-b border-gray-800 last:border-b-0 font-medium'
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={closeMenu}
                   >
                     {link.label}
                   </Link>
@@ -91,4 +99,8 @@ export default function Navbar() {
       <div className='h-[1px] bg-gradient-to-r from-black via-[#00faff] to-black w-full' />
     </>
   );
-}
+});
+
+Navbar.displayName = 'Navbar';
+
+export default Navbar;

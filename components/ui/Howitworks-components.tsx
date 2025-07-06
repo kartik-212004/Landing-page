@@ -1,11 +1,8 @@
 'use client';
 
-import { AnimatedList } from '@/components/magicui/animated-list';
-import { Globe } from '@/components/magicui/globe';
-import { Compare } from '@/components/ui/compare';
 import { cn } from '@/lib/utils';
-
-import { useEffect, useState } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 
 interface Item {
   name: string;
@@ -15,12 +12,12 @@ interface Item {
   time: string;
 }
 
-let notifications = [
+const notifications = [
   {
     name: 'Redis',
     description: 'Database Server',
     time: '15m ago',
-    icon: '🛢️', // Replaced StackIcon with a Redis emoji
+    icon: '🛢️',
     color: '#DC382D',
   },
   {
@@ -48,30 +45,29 @@ let notifications = [
     name: 'Github',
     description: 'Code Repository',
     time: '1m ago',
-    icon: '�',
+    icon: '🔧',
     color: '#24292E',
   },
 ];
 
-notifications = Array.from({ length: 10 }, () => notifications).flat();
-
 const Notification = ({ name, description, icon, color, time }: Item) => {
+  const shouldReduceMotion = useReducedMotion();
+  
   return (
-    <figure
+    <motion.figure
       className={cn(
-        'relative mx-auto min-h-fit w-full cursor-pointer overflow-hidden rounded-2xl p-3',
-        // animation styles
-        'transition-all duration-200 ease-in-out hover:scale-[102%]',
-        // dark styles for better visibility
-        'bg-[#1c1c1c] backdrop-blur-sm shadow-lg'
+        'relative mx-auto min-h-fit w-full cursor-pointer overflow-hidden rounded-xl p-3',
+        'bg-[#1c1c1c] backdrop-blur-sm shadow-sm border border-gray-800/50'
       )}
+      initial={shouldReduceMotion ? {} : { opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
     >
       <div className='flex flex-row items-center gap-3 w-full'>
         <div
           className='flex size-8 items-center justify-center rounded-lg text-white flex-shrink-0'
-          style={{
-            backgroundColor: color,
-          }}
+          style={{ backgroundColor: color }}
         >
           <span className='text-sm'>{icon}</span>
         </div>
@@ -84,76 +80,233 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
           <p className='text-body-small text-gray-300 truncate'>{description}</p>
         </div>
       </div>
-    </figure>
+    </motion.figure>
   );
 };
 
 export { Notification };
 
+// Lightweight animated list component
 export function AnimatedListDemo({ className }: { className?: string }) {
-  // Show 3 notifications on mobile, 5 on larger screens
-  const getNotificationCount = () => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < 768 ? 4 : 5;
-    }
-    return 5; // Default for SSR
-  };
+  const [visibleItems, setVisibleItems] = useState<Item[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
-  const [notificationCount, setNotificationCount] = useState(getNotificationCount);
+  const resetAnimation = useCallback(() => {
+    setVisibleItems([]);
+    setCurrentIndex(0);
+  }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      setNotificationCount(getNotificationCount());
-    };
+    if (shouldReduceMotion) {
+      // Show all items immediately if motion is reduced
+      setVisibleItems(notifications.slice(0, 4));
+      return;
+    }
 
-    window.addEventListener('resize', handleResize);
-    // Set initial count after mount
-    setNotificationCount(getNotificationCount());
+    const interval = setInterval(() => {
+      if (currentIndex < notifications.length) {
+        setVisibleItems(prev => [...prev, notifications[currentIndex]]);
+        setCurrentIndex(prev => prev + 1);
+      } else {
+        resetAnimation();
+      }
+    }, 1000); // Increased interval for better performance
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => clearInterval(interval);
+  }, [currentIndex, shouldReduceMotion, resetAnimation]);
+
+  const displayCount = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768 ? 3 : 4;
+    }
+    return 4;
   }, []);
 
   return (
-    <div
-      className={cn(
-        'relative flex h-[100%] w-full flex-col overflow-hidden rounded-lgp-2',
-        className
-      )}
-    >
-      <AnimatedList className='w-full'>
-        {notifications.slice(0, notificationCount).map((item, idx) => (
-          <Notification
-            {...item}
-            key={idx}
-          />
+    <div className={cn('relative flex h-full w-full flex-col overflow-hidden rounded-lg', className)}>
+      <div className='space-y-2 flex-1 overflow-hidden'>
+        {visibleItems.slice(-displayCount).map((item, idx) => (
+          <Notification {...item} key={`${item.name}-${idx}`} />
         ))}
-      </AnimatedList>
-
-      <div className='pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/10 to-transparent'></div>
+      </div>
+      <div className='pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/20 to-transparent'></div>
     </div>
   );
 }
 
+// Lightweight deployment progress demo
 export function CompareDemo() {
+  const [progress, setProgress] = useState(0);
+  const [status, setStatus] = useState('Initializing...');
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      setProgress(100);
+      setStatus('Ready! ✅');
+      return;
+    }
+
+    const steps = [
+      { label: 'Initializing...', duration: 800 },
+      { label: 'Building container...', duration: 1500 },
+      { label: 'Deploying to cluster...', duration: 1200 },
+      { label: 'Starting services...', duration: 800 },
+      { label: 'Ready! ✅', duration: 800 },
+    ];
+    
+    let currentStep = 0;
+    let currentProgress = 0;
+
+    const runStep = () => {
+      if (currentStep < steps.length) {
+        setStatus(steps[currentStep].label);
+        
+        const stepProgress = (currentStep + 1) * (100 / steps.length);
+        const duration = steps[currentStep].duration;
+        const progressIncrement = (stepProgress - currentProgress) / (duration / 50);
+
+        const progressInterval = setInterval(() => {
+          currentProgress += progressIncrement;
+          if (currentProgress >= stepProgress) {
+            currentProgress = stepProgress;
+            clearInterval(progressInterval);
+            currentStep++;
+            setTimeout(runStep, 200);
+          }
+          setProgress(Math.min(100, currentProgress));
+        }, 50);
+      } else {
+        // Reset after completion
+        setTimeout(() => {
+          currentStep = 0;
+          currentProgress = 0;
+          setProgress(0);
+          runStep();
+        }, 2000);
+      }
+    };
+
+    runStep();
+  }, [shouldReduceMotion]);
+
   return (
-    <div className='w-full h-[180px] md:h-[200px] rounded-lg overflow-hidden bg-black/10'>
-      <Compare
-        firstImage='https://assets.aceternity.com/code-problem.png'
-        secondImage='https://assets.aceternity.com/code-solution.png'
-        firstImageClassName='object-cover object-center w-full h-full'
-        secondImageClassname='object-cover object-center w-full h-full'
-        className='w-full h-full min-w-full'
-        slideMode='hover'
-      />
+    <div className='w-full h-full flex flex-col justify-center p-4 bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-lg border border-gray-700/50'>
+      <div className='space-y-4'>
+        <div className='flex items-center justify-between'>
+          <span className='text-sm text-gray-300'>Deployment Status</span>
+          <span className='text-xs text-gray-400'>{Math.round(progress)}%</span>
+        </div>
+        
+        <div className='w-full bg-gray-700 rounded-full h-2 overflow-hidden'>
+          <motion.div
+            className='h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full'
+            style={{ width: `${progress}%` }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.1 }}
+          />
+        </div>
+        
+        <div className='flex items-center space-x-2'>
+          <motion.div
+            className='w-2 h-2 bg-blue-500 rounded-full'
+            animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          />
+          <span className='text-sm text-gray-200'>{status}</span>
+        </div>
+      </div>
     </div>
   );
 }
 
+// Ultra-lightweight network visualization
 export function GlobeDemo() {
+  const [activeNode, setActiveNode] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+
+  const nodes = useMemo(() => [
+    { x: 20, y: 30, label: 'US-East' },
+    { x: 70, y: 25, label: 'EU-West' },
+    { x: 85, y: 60, label: 'Asia-Pacific' },
+    { x: 50, y: 75, label: 'US-West' },
+  ], []);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    
+    const interval = setInterval(() => {
+      setActiveNode(prev => (prev + 1) % nodes.length);
+    }, 2000); // Slower for better performance
+    
+    return () => clearInterval(interval);
+  }, [nodes.length, shouldReduceMotion]);
+
   return (
-    <div className='relative flex w-full h-[180px] md:h-[200px] items-center justify-center overflow-hidden rounded-lg bg-black/10'>
-      <Globe className='scale-75 md:scale-90 w-full h-full' />
-      <div className='pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]' />
+    <div className='relative w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900/30 to-blue-900/20 rounded-lg border border-gray-700/30 overflow-hidden'>
+      {/* Network background */}
+      <div className='absolute inset-0 opacity-20'>
+        <div className='absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]'></div>
+      </div>
+
+      {/* Network nodes */}
+      <div className='relative w-full h-full'>
+        {nodes.map((node, index) => (
+          <div key={index}>
+            {/* Node */}
+            <motion.div
+              className={`absolute w-3 h-3 rounded-full ${
+                activeNode === index ? 'bg-blue-400' : 'bg-gray-500'
+              }`}
+              style={{
+                left: `${node.x}%`,
+                top: `${node.y}%`,
+                transform: 'translate(-50%, -50%)',
+              }}
+              animate={shouldReduceMotion ? {} : {
+                scale: activeNode === index ? [1, 1.3, 1] : 1,
+                opacity: activeNode === index ? [0.8, 1, 0.8] : 0.6,
+              }}
+              transition={{ duration: 0.8 }}
+            />
+            
+            {/* Node label */}
+            <motion.div
+              className='absolute text-xs text-gray-300 font-medium'
+              style={{
+                left: `${node.x}%`,
+                top: `${node.y + 12}%`,
+                transform: 'translateX(-50%)',
+              }}
+              animate={shouldReduceMotion ? {} : {
+                opacity: activeNode === index ? 1 : 0.5,
+                scale: activeNode === index ? 1.1 : 1,
+              }}
+            >
+              {node.label}
+            </motion.div>
+          </div>
+        ))}
+        
+        {/* Center hub */}
+        <motion.div
+          className='absolute w-4 h-4 bg-blue-500 rounded-full'
+          style={{
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+          animate={shouldReduceMotion ? {} : {
+            scale: [1, 1.2, 1],
+            boxShadow: [
+              '0 0 0 0 rgba(59, 130, 246, 0.7)',
+              '0 0 0 8px rgba(59, 130, 246, 0)',
+              '0 0 0 0 rgba(59, 130, 246, 0)',
+            ],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+      </div>
     </div>
   );
 }
