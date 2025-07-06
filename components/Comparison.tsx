@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import { Check, X } from 'lucide-react';
+import { motion } from 'motion/react';
 import Tablesvg from './ui/table-svg';
 
 export default function Comparison() {
@@ -37,55 +40,186 @@ export default function Comparison() {
         <div className="hidden lg:block">
           <div className="grid lg:grid-cols-3 lg:gap-8 xl:gap-12 items-start">
             {/* Left Content - Smaller width */}
-            <div className="space-y-6">
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 0.2,
+              }}
+            >
               <div className="inline-block">
-                <h2 className="text-4xl xl:text-5xl font-bold text-white leading-tight">
+                <motion.h2
+                  className="text-4xl xl:text-5xl font-bold text-white leading-tight"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{
+                    duration: 0.7,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: 0.4,
+                  }}
+                >
                   Axom Vs The Rest:
-                </h2>
-                <p className="text-base xl:text-lg text-gray-400 mt-4">
+                </motion.h2>
+                <motion.p
+                  className="text-base xl:text-lg text-gray-400 mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: 0.6,
+                  }}
+                >
                   Modular, Monetizable, and Mission-Ready
-                </p>
+                </motion.p>
               </div>
-            </div>
+            </motion.div>
             
             {/* Right Content - Table takes 2 columns */}
-            <div className="col-span-2 relative">
-              <div className="w-full">
+            <motion.div
+              className="col-span-2 relative"
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 0.4,
+              }}
+            >
+              <motion.div
+                className="w-full"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 0.8,
+                }}
+              >
                 <Tablesvg />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
 
         {/* Mobile Layout */}
         <div className="lg:hidden space-y-8">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+          <motion.div
+            className="text-center space-y-4"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{
+              duration: 0.7,
+              ease: [0.25, 0.46, 0.45, 0.94],
+              delay: 0.2,
+            }}
+          >
+            <motion.h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 0.4,
+              }}
+            >
               Axom Vs The Rest:
-            </h2>
-            <p className="text-base md:text-lg text-gray-400">
+            </motion.h2>
+            <motion.p
+              className="text-base md:text-lg text-gray-400"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.5,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 0.6,
+              }}
+            >
               Modular, Monetizable, and Mission-Ready
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Mobile Table */}
-          <div className="space-y-4">
-            <div className="border border-neutral-800 rounded-lg bg-neutral-900/20 p-4">
-              <h3 className="text-white font-semibold text-lg mb-4 text-center">
+          <motion.div
+            className="space-y-4"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{
+              duration: 0.7,
+              ease: [0.25, 0.46, 0.45, 0.94],
+              delay: 0.8,
+            }}
+          >
+            <motion.div
+              className="border border-neutral-800 rounded-lg bg-neutral-900/20 p-4"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: 1.0,
+              }}
+            >
+              <motion.h3
+                className="text-white font-semibold text-lg mb-4 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 1.2,
+                }}
+              >
                 AXOM MCP
-              </h3>
+              </motion.h3>
               <div className="space-y-3">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex justify-between items-center">
+                  <motion.div
+                    key={index}
+                    className="flex justify-between items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      delay: 1.4 + index * 0.05,
+                    }}
+                  >
                     <span className="text-white text-sm">{feature}</span>
                     {getFeatureSupport(index, 0) ? (
                       <Check className="w-4 h-4 text-green-500" />
                     ) : (
                       <X className="w-4 h-4 text-red-500" />
                     )}
-                  </div>
+                  </motion.div>
                 ))}
-                <div className="pt-2 border-t border-neutral-700">
+                <motion.div
+                  className="pt-2 border-t border-neutral-700"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    delay: 1.8,
+                  }}
+                >
                   <div className="flex justify-between text-sm">
                     <span className="text-white">Holders:</span>
                     <span className="text-white">TBA</span>
@@ -94,10 +228,10 @@ export default function Comparison() {
                     <span className="text-white">ATH:</span>
                     <span className="text-white">TBA</span>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
