@@ -86,7 +86,7 @@ const HowItWorks = React.memo(() => {
   return (
     <motion.section
       ref={sectionRef}
-      className='bg-black text-white px-3 sm:px-4 md:px-8 lg:px-12 relative overflow-hidden py-8 sm:py-12 md:py-16 lg:py-20 perf-optimized'
+      className='bg-black text-white py-16 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12 relative overflow-hidden perf-optimized'
       initial='hidden'
       whileInView='visible'
       viewport={{ once: true, amount: 0.1 }}

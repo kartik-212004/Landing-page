@@ -7,7 +7,7 @@
 /* Industry-standard typography system using Satoshi font */
 :root {
   --font-primary:
-    "Satoshi-Variable", "Satoshi-Regular", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Satoshi-Variable", "Satoshi-LightItalic", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
 
   /* Font weights for consistent usage */
