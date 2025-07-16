@@ -53,7 +53,7 @@ const Hero = memo(() => {
       </div>
 
       {/* Mobile background gradient when Spline is hidden */}
-      <div className='absolute md:hidden inset-0 z-0 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20 gradient-optimized'></div>
+      <div className='absolute md:hidden inset-0 z-0 bg-gradient-to-br from-purple-900/20 via-black to-purple-900/20 gradient-optimized'></div>
 
       <HeroContent />
     </section>

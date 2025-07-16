@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, memo, useCallback } from 'react';
+import { memo, useCallback, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ const Navbar = memo(() => {
 
   return (
     <>
-      <nav className='fixed top-0 left-0 right-0 z-50 flex items-center justify-between mobile-container py-2 sm:py-3 bg-black/95 backdrop-blur-sm text-white overflow-hidden border-b border-gray-800/50'>
+      <nav className='fixed top-0 left-0 right-0 z-50 flex  items-center justify-between mobile-container py-2 sm:py-3 bg-black/95 backdrop-blur-sm text-white overflow-hidden border-b border-gray-800/50'>
         {/* Left - Logo */}
         <div className='flex items-center space-x-2 z-20'>
           <Image
@@ -95,8 +95,10 @@ const Navbar = memo(() => {
             </div>
           </div>
         )}
+
+        {/* Gradient bottom border */}
+        <div className='absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-black via-purple-600 to-black w-full' />
       </nav>
-      <div className='h-[1px] bg-gradient-to-r from-black via-[#00faff] to-black w-full' />
     </>
   );
 });
