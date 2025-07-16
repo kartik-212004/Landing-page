@@ -2,7 +2,7 @@
 
 import { typography } from '@/lib/typography';
 
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Play } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
@@ -12,7 +12,6 @@ import { GlobeDemo } from './ui/Howitworks-components';
 import { AnimatedListDemo } from './ui/Howitworks-components';
 
 const HowItWorks = React.memo(() => {
-  const [activeStep, setActiveStep] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
@@ -35,11 +34,6 @@ const HowItWorks = React.memo(() => {
 
     observer.observe(element);
     return () => observer.disconnect();
-  }, []);
-
-  // Memoized step change handler
-  const handleStepChange = useCallback((index: number) => {
-    setActiveStep(index);
   }, []);
 
   // Memoize steps to prevent re-renders
@@ -174,7 +168,6 @@ const HowItWorks = React.memo(() => {
             <motion.div
               key={index}
               className='border border-[#222222] p-3 sm:p-4 md:p-5 pt-4 sm:pt-6 md:pt-8 rounded-xl sm:rounded-2xl md:rounded-3xl bg-[#0f0f0f] cursor-pointer group h-[16rem] sm:h-[20rem] md:h-[24rem] lg:h-[28rem] w-full hover:border-gray-600 motion-element'
-              onClick={() => handleStepChange(index)}
               variants={childVariants}
               whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
               whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
@@ -202,9 +195,6 @@ const HowItWorks = React.memo(() => {
             </motion.div>
           ))}
         </motion.div>
-
-     
-
       </motion.div>
     </motion.section>
   );
