@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 export default function AnimatedTitle() {
   return (
     <motion.h1
-      className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold flex flex-col text-center leading-tight px-2 sm:px-4'
+      className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold flex flex-col text-center leading-tight px-2 sm:px-4'
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
