@@ -7,7 +7,7 @@ import HeroVideoDialog from '@/components/magicui/hero-video-dialog';
 export default function AnimatedVideoDialog() {
   return (
     <motion.div
-      className='relative z-20 w-full max-w-4xl'
+      className='relative z-20 w-full max-w-6xl'
       initial={{ opacity: 0, y: 60, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ 

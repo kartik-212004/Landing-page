@@ -41,7 +41,7 @@ export default function HeroContent() {
           Launch Dapp
         </Button>
 
-        <div className='relative z-20 w-full max-w-4xl px-2 sm:px-4'>
+        <div className='relative z-20 w-full max-w-6xl px-2 sm:px-4'>
           <HeroVideoDialog
             className='block w-full aspect-video rounded-lg md:rounded-xl overflow-hidden border border-neutral-700'
             animationStyle='from-center'
