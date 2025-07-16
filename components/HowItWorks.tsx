@@ -203,6 +203,26 @@ const HowItWorks = React.memo(() => {
           ))}
         </motion.div>
 
+        {/* Step navigation dots */}
+        <motion.div
+          className='flex justify-center mt-6 sm:mt-8 md:mt-12 space-x-2 md:space-x-3'
+          variants={childVariants}
+        >
+          {steps.map((_, index) => (
+            <motion.button
+              key={index}
+              onClick={() => handleStepChange(index)}
+              className={`w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-200 ${
+                activeStep === index
+                  ? 'bg-white scale-125'
+                  : 'bg-gray-500 hover:bg-gray-400'
+              }`}
+              whileHover={shouldReduceMotion ? {} : { scale: 1.2 }}
+              whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+            />
+          ))}
+        </motion.div>
+
       </motion.div>
     </motion.section>
   );
