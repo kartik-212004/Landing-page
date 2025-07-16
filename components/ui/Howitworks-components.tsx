@@ -192,7 +192,7 @@ export function CompareDemo() {
   }, [shouldReduceMotion]);
 
   return (
-    <div className='w-full h-full flex flex-col justify-center p-4 bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-lg border border-gray-700/50'>
+    <div className='w-full h-full flex flex-col justify-center p-4 rounded-lg '>
       <div className='space-y-4'>
         <div className='flex items-center justify-between'>
           <span className='text-sm text-gray-300'>Deployment Status</span>
@@ -201,7 +201,7 @@ export function CompareDemo() {
         
         <div className='w-full bg-gray-700 rounded-full h-2 overflow-hidden'>
           <motion.div
-            className='h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full'
+            className='h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full'
             style={{ width: `${progress}%` }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.1 }}
           />
@@ -209,7 +209,7 @@ export function CompareDemo() {
         
         <div className='flex items-center space-x-2'>
           <motion.div
-            className='w-2 h-2 bg-blue-500 rounded-full'
+            className='w-2 h-2 bg-green-500 rounded-full'
             animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
             transition={{ duration: 1, repeat: Infinity }}
           />
@@ -243,7 +243,7 @@ export function GlobeDemo() {
   }, [nodes.length, shouldReduceMotion]);
 
   return (
-    <div className='relative w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900/30 to-blue-900/20 rounded-lg border border-gray-700/30 overflow-hidden'>
+    <div className='relative w-full h-full flex items-center justify-center overflow-hidden'>
       {/* Network background */}
       <div className='absolute inset-0 opacity-20'>
         <div className='absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]'></div>

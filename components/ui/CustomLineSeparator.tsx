@@ -15,7 +15,7 @@ const CustomLineSeparator: React.FC<CustomLineSeparatorProps> = ({
   const maskId = `path-mask-${Math.random().toString(36).substr(2, 9)}`;
 
   return (
-    <div className={`py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-6 md:px-8 ${className}`}>
+    <div className={`py-2 sm:py-3 md:py-4 lg:py-5 px-4 sm:px-6 md:px-8 ${className}`}>
       <div className="w-full max-w-7xl mx-auto">
         <svg 
           xmlns="http://www.w3.org/2000/svg" 

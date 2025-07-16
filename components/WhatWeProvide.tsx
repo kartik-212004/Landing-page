@@ -7,7 +7,7 @@ import { typography } from '../lib/typography';
 
 const ServicesSection = () => {
   return (
-    <section className='bg-black text-white py-16 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12'>
+    <section className='bg-black text-white py-8 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12'>
       <div className='max-w-7xl mx-auto'>
         {/* Header Badge */}
         <motion.div

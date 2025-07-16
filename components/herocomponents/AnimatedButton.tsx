@@ -7,7 +7,7 @@ import { Zap } from 'lucide-react';
 export default function AnimatedButton() {
   return (
     <motion.button
-      className='px-3 sm:px-4 py-2 md:px-6 md:py-3 flex flex-row space-x-2 justify-center items-center text-xs sm:text-sm md:btn-text-medium border-2 border-neutral-700 rounded-2xl sm:rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors font-medium'
+      className='px-6 py-3 flex flex-row space-x-2 justify-center items-center btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors font-medium'
       initial={{ opacity: 0, y: -30, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ 

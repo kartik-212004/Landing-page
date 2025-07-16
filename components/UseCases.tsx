@@ -42,7 +42,7 @@ export default function UseCases() {
   ];
 
   return (
-    <section className='relative w-full bg-black py-16 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12'>
+    <section className='relative w-full bg-black py-8 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12'>
       <div className='max-w-7xl mx-auto'>
         <div className='flex flex-col items-center text-center mb-12 md:mb-16 lg:mb-20'>
           <motion.div

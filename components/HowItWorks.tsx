@@ -1,13 +1,15 @@
 'use client';
 
-import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
+import { typography } from '@/lib/typography';
+
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
 import { Play } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 
 import { CompareDemo } from './ui/Howitworks-components';
 import { GlobeDemo } from './ui/Howitworks-components';
 import { AnimatedListDemo } from './ui/Howitworks-components';
-import { typography } from '@/lib/typography';
 
 const HowItWorks = React.memo(() => {
   const [activeStep, setActiveStep] = useState(0);
@@ -21,13 +23,13 @@ const HowItWorks = React.memo(() => {
     if (!element) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         const entry = entries[0];
         setIsInView(entry.isIntersecting);
       },
-      { 
+      {
         threshold: 0.1,
-        rootMargin: '50px 0px'
+        rootMargin: '50px 0px',
       }
     );
 
@@ -41,52 +43,65 @@ const HowItWorks = React.memo(() => {
   }, []);
 
   // Memoize steps to prevent re-renders
-  const steps = useMemo(() => [
-    {
-      title: 'Choose a MCP Server',
-      description: 'Launch your own compute server or pick from existing nodes listed on the marketplace.',
-      component: <AnimatedListDemo />,
-    },
-    {
-      title: 'Deploy',
-      description: 'Deploy the MCP node on our Q-flow servers. This will spin a private server in our backend infrastructure.',
-      component: <CompareDemo />,
-    },
-    {
-      title: 'Register And Publish',
-      description: 'Enter credentials to make MCP work on commands and publish in test playground.',
-      component: <GlobeDemo />,
-    },
-    {
-      title: 'Test in Playground',
-      description: 'Use the Playground to simulate inputs, observe outputs, and configure runtime behaviors.',
-      icon: <Play className='w-6 h-6' />,
-      component: <CompareDemo />,
-    },
-  ], []);
+  const steps = useMemo(
+    () => [
+      {
+        title: 'Choose a MCP Server',
+        description:
+          'Launch your own compute server or pick from existing nodes listed on the marketplace.',
+        component: <AnimatedListDemo />,
+      },
+      {
+        title: 'Deploy',
+        description:
+          'Deploy the MCP node on our Q-flow servers. This will spin a private server in our backend infrastructure.',
+        component: <CompareDemo />,
+      },
+      {
+        title: 'Register And Publish',
+        description:
+          'Enter credentials to make MCP work on commands and publish in test playground.',
+        component: <GlobeDemo />,
+      },
+      {
+        title: 'Test in Playground',
+        description:
+          'Use the Playground to simulate inputs, observe outputs, and configure runtime behaviors.',
+        icon: <Play className='w-6 h-6' />,
+        component: <CompareDemo />,
+      },
+    ],
+    []
+  );
 
   // Simplified animation variants for better performance
-  const containerVariants = useMemo(() => ({
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1, 
-      transition: shouldReduceMotion ? { duration: 0.1 } : { duration: 0.2 }
-    }
-  }), [shouldReduceMotion]);
+  const containerVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: shouldReduceMotion ? { duration: 0.1 } : { duration: 0.2 },
+      },
+    }),
+    [shouldReduceMotion]
+  );
 
-  const childVariants = useMemo(() => ({
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: shouldReduceMotion ? { duration: 0.1 } : { duration: 0.3 }
-    }
-  }), [shouldReduceMotion]);
+  const childVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: shouldReduceMotion ? { duration: 0.1 } : { duration: 0.3 },
+      },
+    }),
+    [shouldReduceMotion]
+  );
 
   return (
     <motion.section
       ref={sectionRef}
-      className='bg-black text-white py-16 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12 relative overflow-hidden perf-optimized'
+      className='bg-black text-white py-8 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 relative overflow-hidden perf-optimized'
       initial='hidden'
       whileInView='visible'
       viewport={{ once: true, amount: 0.1 }}
@@ -149,10 +164,10 @@ const HowItWorks = React.memo(() => {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: shouldReduceMotion ? 
-                { duration: 0.1 } : 
-                { staggerChildren: 0.05, delayChildren: 0.1 }
-            }
+              transition: shouldReduceMotion
+                ? { duration: 0.1 }
+                : { staggerChildren: 0.05, delayChildren: 0.1 },
+            },
           }}
         >
           {steps.map((step, index) => (
@@ -166,12 +181,14 @@ const HowItWorks = React.memo(() => {
               transition={{ duration: 0.2 }}
             >
               <div className='h-full flex flex-col'>
-                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-center text-white group-hover:text-gray-100 transition-colors mb-2 sm:mb-3 md:mb-4 leading-tight">
+                <h3 className='text-base sm:text-lg md:text-xl font-semibold text-center text-white group-hover:text-gray-100 transition-colors mb-2 sm:mb-3 md:mb-4 leading-tight'>
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className={`${typography.smallText} text-center mb-3 sm:mb-4 md:mb-6 group-hover:text-gray-300 transition-colors px-1 sm:px-2 md:px-0 leading-relaxed`}>
+                <p
+                  className={`${typography.smallText} text-center mb-3 sm:mb-4 md:mb-6 group-hover:text-gray-300 transition-colors px-1 sm:px-2 md:px-0 leading-relaxed`}
+                >
                   {step.description}
                 </p>
 
@@ -186,25 +203,6 @@ const HowItWorks = React.memo(() => {
           ))}
         </motion.div>
 
-        {/* Step navigation dots */}
-        <motion.div
-          className='flex justify-center mt-6 sm:mt-8 md:mt-12 space-x-2 md:space-x-3'
-          variants={childVariants}
-        >
-          {steps.map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => handleStepChange(index)}
-              className={`w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-200 ${
-                activeStep === index
-                  ? 'bg-white scale-125'
-                  : 'bg-gray-500 hover:bg-gray-400'
-              }`}
-              whileHover={shouldReduceMotion ? {} : { scale: 1.2 }}
-              whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-            />
-          ))}
-        </motion.div>
       </motion.div>
     </motion.section>
   );

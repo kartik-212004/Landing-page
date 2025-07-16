@@ -10,7 +10,7 @@ import { typography } from '../lib/typography';
 
 export default function Recommended() {
   return (
-    <section className='bg-black text-white py-16 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12 relative flex flex-col justify-center items-center overflow-hidden'>
+    <section className='bg-black text-white py-8 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 relative flex flex-col justify-center items-center overflow-hidden'>
       <div className='max-w-7xl mx-auto w-full flex flex-col items-center space-y-8 md:space-y-10'>
         {/* Header Badge */}
         <motion.div

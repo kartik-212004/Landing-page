@@ -10,7 +10,7 @@ import Backgroundlines from './ui/backgroundlines';
 
 export default function Visionary() {
   return (
-    <section className='relative w-full bg-black py-16 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12 overflow-hidden'>
+    <section className='relative w-full bg-black py-8 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden'>
       {/* Background Lines - For all screen sizes */}
       <div className='absolute inset-0 flex justify-center'>
         <div className='w-full max-w-7xl opacity-20 lg:opacity-30'>
