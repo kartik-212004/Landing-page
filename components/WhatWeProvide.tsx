@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { motion } from 'motion/react';
+import { typography } from '../lib/typography';
 
 const ServicesSection = () => {
   return (
@@ -24,7 +25,7 @@ const ServicesSection = () => {
         {/* Main Title */}
         <div className='text-center mb-12 md:mb-16'>
           <motion.h2
-            className='text-display-medium mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent'
+            className={`${typography.sectionHeading} ${typography.gradientText} ${typography.margins.headingBottom}`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}

@@ -6,6 +6,7 @@ import { BugIcon } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 
 import { ScrollBasedVelocityDemo } from './ui/scroll-reveal';
+import { typography } from '../lib/typography';
 
 // Memoized component for better performance
 const Partners = memo(() => {
@@ -44,7 +45,7 @@ const Partners = memo(() => {
         {/* Main Title */}
         <div className='text-center mb-12 md:mb-16'>
           <motion.h2
-            className='text-display-medium mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent'
+            className={`${typography.sectionHeading} ${typography.gradientText} ${typography.margins.headingBottom}`}
             initial='hidden'
             whileInView='visible'
             viewport={{ once: true, amount: 0.2 }}

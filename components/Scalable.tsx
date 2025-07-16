@@ -5,6 +5,7 @@ import React from 'react';
 import { Bitcoin } from 'lucide-react';
 import { Code, Database, Puzzle } from 'lucide-react';
 import { motion } from 'motion/react';
+import { typography } from '../lib/typography';
 
 const WhatAreWe = () => {
   const features = [
@@ -51,7 +52,7 @@ const WhatAreWe = () => {
         {/* Main Heading */}
         <div className='text-center mb-12 md:mb-16'>
           <motion.h2
-            className='text-display-medium mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent'
+            className={`${typography.sectionHeading} ${typography.gradientText} ${typography.margins.headingBottom}`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -101,7 +102,7 @@ const WhatAreWe = () => {
                 </div>
 
                 <div className='flex-1'>
-                  <h3 className='text-title-small md:text-title-large text-white group-hover:text-gray-100 transition-colors duration-300 mb-2 md:mb-3'>
+                  <h3 className={`${typography.cardHeading} text-white group-hover:text-gray-100 transition-colors duration-300 ${typography.margins.cardBottom}`}>
                     {feature.title}
                   </h3>
                 </div>

@@ -6,6 +6,7 @@ import { Globe, Lock, Settings, Users, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 
 import Buttons from './ui/Buttons';
+import { typography } from '../lib/typography';
 
 export default function UseCases() {
   const useCases = [
@@ -58,7 +59,7 @@ export default function UseCases() {
           </motion.div>
 
           <motion.h2
-            className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6'
+            className={`${typography.sectionHeading} text-white ${typography.margins.headingBottom}`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}

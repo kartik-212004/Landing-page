@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { CompareDemo } from './ui/Howitworks-components';
 import { GlobeDemo } from './ui/Howitworks-components';
 import { AnimatedListDemo } from './ui/Howitworks-components';
+import { typography } from '@/lib/typography';
 
 const HowItWorks = React.memo(() => {
   const [activeStep, setActiveStep] = useState(0);
@@ -127,14 +128,14 @@ const HowItWorks = React.memo(() => {
           </motion.div>
 
           <motion.h2
-            className='text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-display-medium mb-3 sm:mb-4 md:mb-6 lg:mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent px-2 sm:px-4 md:px-0 font-bold hero-text'
+            className={`${typography.sectionHeading} ${typography.gradientText} mb-3 sm:mb-4 md:mb-6 lg:mb-8 px-2 sm:px-4 md:px-0 hero-text`}
             variants={childVariants}
           >
             How it Works
           </motion.h2>
 
           <motion.p
-            className='text-sm sm:text-base md:text-lg lg:text-body-large text-gray-400 max-w-3xl mx-auto px-2 sm:px-4 md:px-0 leading-relaxed'
+            className={`${typography.bodyText} max-w-3xl mx-auto px-2 sm:px-4 md:px-0 leading-relaxed`}
             variants={childVariants}
           >
             Select from the marketplace, deploy or list nodes built to run:
@@ -165,12 +166,12 @@ const HowItWorks = React.memo(() => {
               transition={{ duration: 0.2 }}
             >
               <div className='h-full flex flex-col'>
-                <h3 className='text-sm sm:text-base md:text-lg lg:text-title-large text-center text-white group-hover:text-gray-100 transition-colors mb-2 sm:mb-3 md:mb-4 font-semibold leading-tight'>
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-center text-white group-hover:text-gray-100 transition-colors mb-2 sm:mb-3 md:mb-4 leading-tight">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className='text-xs sm:text-sm md:text-base text-gray-400 text-center mb-3 sm:mb-4 md:mb-6 group-hover:text-gray-300 transition-colors px-1 sm:px-2 md:px-0 leading-relaxed'>
+                <p className={`${typography.smallText} text-center mb-3 sm:mb-4 md:mb-6 group-hover:text-gray-300 transition-colors px-1 sm:px-2 md:px-0 leading-relaxed`}>
                   {step.description}
                 </p>
 

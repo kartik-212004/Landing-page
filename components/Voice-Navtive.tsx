@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import { typography } from '../lib/typography';
 
 export default function VoiceNative() {
   return (
@@ -41,7 +42,7 @@ export default function VoiceNative() {
 
             {/* Title */}
             <motion.h2
-              className='text-5xl xl:text-6xl font-bold text-white leading-tight'
+              className={`${typography.sectionHeading} text-white leading-tight`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}

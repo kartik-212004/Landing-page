@@ -9,7 +9,7 @@ const Spline = lazy(() => import('@splinetool/react-spline/next'));
 
 function SplineLoader() {
   return (
-    <div className='absolute inset-0 z-0 bg-gradient-to-br from-purple-900/30 via-black to-pink-900/30 flex items-center justify-center'>
+    <div className='absolute inset-0 z-0 bg-gradient-to-b from-purple-900/20 via-purple-900/10 to-black flex items-center justify-center'>
       <div className='w-8 h-8 border border-gray-600 border-t-purple-400 rounded-full animate-spin'></div>
     </div>
   );
@@ -53,7 +53,7 @@ const Hero = memo(() => {
       </div>
 
       {/* Mobile background gradient when Spline is hidden */}
-      <div className='absolute md:hidden inset-0 z-0 bg-gradient-to-br from-purple-900/20 via-black to-purple-900/20 gradient-optimized'></div>
+      <div className='absolute md:hidden inset-0 z-0 bg-gradient-to-b from-purple-900/20 via-purple-900/10 to-black  gradient-optimized'></div>
 
       <HeroContent />
     </section>

@@ -6,6 +6,7 @@ import { Send } from 'lucide-react';
 import { motion } from 'motion/react';
 
 import { InfiniteMovingCardsDemo } from './marquee';
+import { typography } from '../lib/typography';
 
 export default function Recommended() {
   return (
@@ -27,7 +28,7 @@ export default function Recommended() {
 
         {/* Main Title */}
         <motion.h2
-          className='text-display-small text-center mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent'
+          className={`${typography.sectionHeading} ${typography.gradientText} ${typography.margins.headingBottom} text-center`}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
