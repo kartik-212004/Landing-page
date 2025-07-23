@@ -128,11 +128,17 @@ const HowItWorks = React.memo(() => {
           variants={childVariants}
         >
           <motion.div
-            className='flex flex-row justify-center pb-2 sm:pb-3 md:pb-6 items-center'
+            className='flex flex-row justify-center pb-2 sm:pb-3 mb-8 md:pb-6 items-center'
             variants={childVariants}
           >
-            <button className='px-3 sm:px-4 md:px-5 flex flex-row space-x-2 justify-center items-center py-1 md:py-2 text-xs sm:text-sm md:btn-text-medium border-2 border-neutral-700 rounded-2xl sm:rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors font-medium'>
+            {/* <button className='px-3 sm:px-4 md:px-5 flex flex-row space-x-2 justify-center items-center py-1 md:py-2 text-xs sm:text-sm md:btn-text-medium border-2 border-neutral-700 rounded-2xl sm:rounded-3xl bg-neutral-900 hover:bg-neutral-800 transition-colors font-medium'>
               Pick a MCP • Deploy a Node • Register • Run it
+            </button> */}
+            <button className='px-6 py-3  flex flex-row space-x-2 justify-center items-center btn-text-small md:btn-text-medium border-2 border-neutral-700 rounded-full bg-neutral-900 hover:bg-neutral-800 transition-colors'>
+              <span className='inline'>
+                {' '}
+                Pick a MCP • Deploy a Node • Register • Run it
+              </span>
             </button>
           </motion.div>
 
